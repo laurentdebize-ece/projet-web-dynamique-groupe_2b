@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-wrapper{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.left-banner{
+    background-color: antiquewhite;
+}
+
+.dashboard{
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+}
