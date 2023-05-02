@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.login-page{
+    background-image: linear-gradient(to right, #AAFFA9 0%,  #11FFBD 100%);
+    height: 100vh;
+    position: relative;
+}
+
