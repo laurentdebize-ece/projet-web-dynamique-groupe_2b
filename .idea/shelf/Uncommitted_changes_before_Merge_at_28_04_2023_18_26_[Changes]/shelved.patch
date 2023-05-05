@@ -1,0 +1,21 @@
+Index: test.html
+===================================================================
+diff --git a/test.html b/test.html
+deleted file mode 100644
+--- a/test.html	(revision 7018a7111b33ba37a3c0b798188a0df451a66243)
++++ /dev/null	(revision 7018a7111b33ba37a3c0b798188a0df451a66243)
+@@ -1,13 +0,0 @@
+-<!doctype html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <meta name="viewport"
+-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+-    <title>Document</title>
+-</head>
+-<body>
+-    <h1>test</h1>
+-</body>
+-</html>
+\ No newline at end of file
