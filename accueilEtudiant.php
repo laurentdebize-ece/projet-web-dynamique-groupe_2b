@@ -1,3 +1,38 @@
+<?php
+    session_start();
+    require_once 'bdd.php';
+
+    
+    $idUtilisateur = $_SESSION['idUtilisateur'];
+
+    $requeteInfoEleve = $bdd->prepare("SELECT * FROM Eleve WHERE idUtilisateur = :idUtilisateur");
+    $requeteInfoEleve->bindParam(':idUtilisateur', $idUtilisateur);
+    $requeteInfoEleve->execute();
+
+    $infoEleve = $requeteInfoEleve->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['nom'] = $infoEleve['nomEleve'];
+    $_SESSION['prenom'] = $infoEleve['prenomEleve'];
+    $_SESSION['mail'] = $infoEleve['mail'];
+    $_SESSION['ecole'] = $infoEleve['ecole'];
+    $_SESSION['promo'] = $infoEleve['promo'];
+
+
+    $requeteMatiere = $bdd->prepare("SELECT * FROM Matiere WHERE ecole = :ecole AND promo = :promo");
+    $requeteMatiere->bindParam(':ecole', $_SESSION['ecole']);
+    $requeteMatiere->bindParam(':promo', $_SESSION['promo']);
+    $requeteMatiere->execute();
+
+    $matieres = $requeteMatiere->fetchAll(PDO::FETCH_ASSOC);
+    $nbMatieres = $requeteMatiere->rowCount();
+
+   
+
+ 
+
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +58,8 @@
                 <div class="photo"></div>
             </div>
             <div class="user-info">
-                <h4 class="user-name">Antoine SUBRA</h4>
-                <h6 class="user-school">ECE Lyon</h6>
+                <h4 class="user-name"><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></h4>
+                <h6 class="user-school"><?php echo $_SESSION['ecole'] . " " . $_SESSION['promo']; ?></h6>
                 <h6 class="user-statut">Etudiant</h6>
             </div>
             <ul class="menu-list">
@@ -65,7 +100,18 @@
                 </div>
 
                 <div class="mes-matieres">
-                    <h2 class='card-title'>Mes matieres</h2>
+                    <h2 class="card-title">Mes matières</h2>
+                    <?php
+                        foreach($matieres as $matiere){
+                            echo "<div class='matiere-container'>";
+                            echo "<div class='left-matiere'>";
+                            echo "<div class='colorcircle'></div>";
+                            echo "<h3 class='nom-matiere'>" . $matiere['nomMatiere'] . "</h3>";
+                            echo "</div>";
+                            echo "<i class='fa-thin fa-arrow-right'></i>";
+                            echo "</div>";
+                        }
+                    ?>
                 </div>
 
                 <div class="account">

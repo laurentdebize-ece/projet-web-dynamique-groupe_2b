@@ -155,8 +155,52 @@
    
     grid-column: 4 / 6;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
     
 }
+
+.left-matiere{
+    display: flex;
+    align-items: center;
+    
+}
+
+.matiere-container{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+    padding-top: 10px;
+    justify-content: space-between;
+   
+}
+.matiere-container::before{
+    content: '';
+    width: 150px;
+    position: absolute;
+    top: 0%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.571);
+    margin-right: 10px;
+}
+
+.colorcircle{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+    background: #C6DEC6;
+}
+
+.nom-matiere{
+    font-weight: 200;
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
+
 
 .mes-competences{
     
@@ -198,3 +242,4 @@
     background-color: #c6dec660;
     z-index: -2;
 }
+
