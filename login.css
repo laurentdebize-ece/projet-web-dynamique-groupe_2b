@@ -93,3 +93,8 @@
     color: black;
     text-transform: uppercase;
 }
+
+.error{
+    color: red;
+    
+}

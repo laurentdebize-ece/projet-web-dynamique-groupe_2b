@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,17 +22,23 @@
                 MySkills
             </h1>
         </div>
-
         <div class="form-wrap">
-            <form action="" class="login-form" method="POST">
+            <form action="./traitementLogin.php" class="login-form" method="post">
+                
                 <div class="form-input">
-                    <input class="input" type="text" name="username" placeholder="Username" class="input-form">
+                    <input class="input" type="text" name="email" placeholder="Email" class="input-form">
                     <input class="input" type="password" name="password" placeholder="Password" class="input-form">
                 </div>
+                <?php
+                    if(isset($_GET['error'])){
+                        echo '<p class="error">Email ou mot de passe incorrect</p>';
+                    }
+                ?>
                 <button class="form-btn" type="submit">Se connecter</button>
             </form>
         </div>
-            <a class="create-link" href="#">Créer un compte</a>
+          
     </section>
 </body>
 </html>
+
