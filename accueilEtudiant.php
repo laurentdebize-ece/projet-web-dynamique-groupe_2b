@@ -11,11 +11,21 @@
 
     $infoEleve = $requeteInfoEleve->fetch(PDO::FETCH_ASSOC);
 
+
+    $requeteIdEleve = $bdd->prepare("SELECT idEleve FROM Eleve WHERE idUtilisateur = :idUtilisateur");
+    $requeteIdEleve->bindParam(':idUtilisateur', $idUtilisateur);
+    $requeteIdEleve->execute();
+
+    $idEleve = $requeteIdEleve->fetch(PDO::FETCH_ASSOC);
+
+
     $_SESSION['nom'] = $infoEleve['nomEleve'];
     $_SESSION['prenom'] = $infoEleve['prenomEleve'];
     $_SESSION['mail'] = $infoEleve['mail'];
     $_SESSION['ecole'] = $infoEleve['ecole'];
     $_SESSION['promo'] = $infoEleve['promo'];
+    $_SESSION['idEleve'] = $idEleve['idEleve'];
+    
 
 
     $requeteMatiere = $bdd->prepare("SELECT * FROM Matiere WHERE ecole = :ecole AND promo = :promo");
@@ -27,9 +37,15 @@
     $nbMatieres = $requeteMatiere->rowCount();
 
    
+    $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
+    $requeteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);
+    $requeteCompetence->execute();
 
- 
+    $competences = $requeteCompetence->fetchAll(PDO::FETCH_ASSOC);
+    $nbCompetences = $requeteCompetence->rowCount();
 
+    
+    
     
 ?>
 
@@ -97,12 +113,33 @@
 
                 <div class="mes-competences">
                     <h2 class='card-title'>Mes competences</h2>
+                        <div class="competence-card">
+                            <?php
+                                $competenceNumber = 0;
+                                foreach($competences as $competence){
+                                    if($competenceNumber < 3){
+                                    echo "<div class='competence-wrap'>";
+                                    echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
+                                    echo "<p class='competence-desc'>". $competence['description'] ."</p>";
+                                    echo "<i class='fa-thin fa-arrow-right'></i>";
+                                    echo "</div>";
+                                    $competenceNumber++;
+                                    }
+                                    else{
+                                        break;
+                                    }
+                                }
+                            ?>
+                        </div>
                 </div>
 
                 <div class="mes-matieres">
                     <h2 class="card-title">Mes matières</h2>
+                    
                     <?php
+                        $matiereNumber = 0;
                         foreach($matieres as $matiere){
+                            if($competenceNumber < 5){
                             echo "<div class='matiere-container'>";
                             echo "<div class='left-matiere'>";
                             echo "<div class='colorcircle'></div>";
@@ -110,7 +147,14 @@
                             echo "</div>";
                             echo "<i class='fa-thin fa-arrow-right'></i>";
                             echo "</div>";
+                            $matiereNumber++;
+                            }
+                            else{
+                                break;
+                            }
                         }
+
+                    
                     ?>
                 </div>
 

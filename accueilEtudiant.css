@@ -243,3 +243,33 @@
     z-index: -2;
 }
 
+.competence-wrap{
+    background: #C6DEC6;
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    position: relative;
+}
+
+.competence-title{
+    font-size: 2rem;
+    font-weight: 200;
+    
+}
+
+.fa-arrow-righ2{
+    position: absolute;
+    bottom: 5%;
+}
+
+.competence-card{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+    padding-top: 10px;
+    justify-content: space-evenly;
+   
+}
