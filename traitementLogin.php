@@ -20,6 +20,7 @@
     $iduser = $requeteID->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION['idUtilisateur'] = $iduser['idUtilisateur'];
+    $_SESSION['statut'] = $resultat['statut'];
   
 
     if($resultat != null){

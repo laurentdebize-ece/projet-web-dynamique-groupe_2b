@@ -92,7 +92,7 @@
                     <a href="" class="menu-link">Toutes les compétences</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Mon compte</a>
+                    <a href="./AccountEleve.php" class="menu-link">Mon compte</a>
                 </li>
             </ul>
             <div class="menu-icon">
@@ -121,7 +121,7 @@
                                     echo "<div class='competence-wrap'>";
                                     echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
                                     echo "<p class='competence-desc'>". $competence['description'] ."</p>";
-                                    echo "<i class='fa-thin fa-arrow-right'></i>";
+                                    echo "<a href='#'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
                                     echo "</div>";
                                     $competenceNumber++;
                                     }
@@ -145,7 +145,7 @@
                             echo "<div class='colorcircle'></div>";
                             echo "<h3 class='nom-matiere'>" . $matiere['nomMatiere'] . "</h3>";
                             echo "</div>";
-                            echo "<i class='fa-thin fa-arrow-right'></i>";
+                            echo "<a class='arrow-link-matiere' href='./matiere.php?matiere=". $matiere['nomMatiere'] ."'><i class='fa-thin fa-arrow-right'></i></a>";
                             echo "</div>";
                             $matiereNumber++;
                             }
@@ -160,10 +160,20 @@
 
                 <div class="account">
                     <h2 class='card-title'>Mon compte</h2>
+                    <div class="account-circle">
+                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-user"></i></a>
+                    </div>
                 </div>
                 
                 <div class="toutes-les-competences">
                     <h2 class="card-title">Toutes les competences</h2>
+                    <div class="ecole-btn-wrap">
+                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">INSEEC</button></a>
+
+                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">ECE</button></a>
+
+                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">HEIP</button></a>
+                    </div>
                 </div>
                 
             </div>
