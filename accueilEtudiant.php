@@ -37,7 +37,7 @@
     $nbMatieres = $requeteMatiere->rowCount();
 
    
-    $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
+    $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description, Competence.idCompetence FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
     $requeteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);
     $requeteCompetence->execute();
 
@@ -121,7 +121,7 @@
                                     echo "<div class='competence-wrap'>";
                                     echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
                                     echo "<p class='competence-desc'>". $competence['description'] ."</p>";
-                                    echo "<a href='#'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
+                                    echo "<a href='./competenceEleve.php?id=". $competence['idCompetence'] . "'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
                                     echo "</div>";
                                     $competenceNumber++;
                                     }
@@ -139,7 +139,7 @@
                     <?php
                         $matiereNumber = 0;
                         foreach($matieres as $matiere){
-                            if($competenceNumber < 5){
+                            if($matiereNumber < 5){
                             echo "<div class='matiere-container'>";
                             echo "<div class='left-matiere'>";
                             echo "<div class='colorcircle'></div>";
