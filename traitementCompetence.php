@@ -3,6 +3,7 @@
     require_once 'bdd.php';
 
     $idCompetence = $_GET['id'];
+    $prev = $_GET['prev'];
 
     if(isset($_POST['choix'])){
         $eval = $_POST['choix'];
@@ -18,8 +19,6 @@
     $requetUpdate->bindParam(':idCompetence', $idCompetence);
     $requetUpdate->execute();
 
-    header('Location: competenceEleve.php?id='.$idCompetence);
 
-
-
+    header('Location: touteCompetenceEleve.php ')
 ?>

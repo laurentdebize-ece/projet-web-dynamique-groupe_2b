@@ -28,7 +28,7 @@
     
 
 
-    $requeteMatiere = $bdd->prepare("SELECT * FROM Matiere WHERE ecole = :ecole AND promo = :promo");
+    $requeteMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere FROM Matiere WHERE ecole = :ecole AND promo = :promo");
     $requeteMatiere->bindParam(':ecole', $_SESSION['ecole']);
     $requeteMatiere->bindParam(':promo', $_SESSION['promo']);
     $requeteMatiere->execute();
@@ -43,6 +43,12 @@
 
     $competences = $requeteCompetence->fetchAll(PDO::FETCH_ASSOC);
     $nbCompetences = $requeteCompetence->rowCount();
+
+    $requeteNote = $bdd->prepare("SELECT * FROM Note WHERE idEleve = :idEleve");
+    $requeteNote->bindParam(':idEleve', $_SESSION['idEleve']);
+    $requeteNote->execute();
+
+    $notes = $requeteNote->fetchAll(PDO::FETCH_ASSOC);
 
     
     
@@ -80,7 +86,7 @@
             </div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="" class="menu-link">Mes competences</a>
+                    <a href="./touteCompetenceEleve.php" class="menu-link">Mes competences</a>
                 </li>
                 <li class="menu-item">
                     <a href="" class="menu-link">Mes matières</a>
@@ -112,19 +118,32 @@
             <div class="menu-part">
 
                 <div class="mes-competences">
-                    <h2 class='card-title'>Mes competences</h2>
+                    <h2 class='card-title'> <a class="gen-card-link" href="touteCompetenceEleve.php">Mes competences</a> </h2>
                         <div class="competence-card">
                             <?php
                                 $competenceNumber = 0;
                                 foreach($competences as $competence){
                                     if($competenceNumber < 3){
-                                    echo "<div class='competence-wrap'>";
-                                    echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
-                                    echo "<p class='competence-desc'>". $competence['description'] ."</p>";
-                                    echo "<a href='./competenceEleve.php?id=". $competence['idCompetence'] . "'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
-                                    echo "</div>";
-                                    $competenceNumber++;
-                                    }
+                                        foreach( $notes as $note){
+                                            if($note['idCompetence'] == $competence['idCompetence']){
+                                                $noteCompetence = $note['note'];
+                                            }
+                                        }
+                                        if($noteCompetence == 0){
+                                            echo "<div class='competence-wrap green'>";
+                                        }
+                                        else if($noteCompetence == 1){
+                                            echo "<div class='competence-wrap orange'>";
+                                        }
+                                        else if($noteCompetence == 2){
+                                            echo "<div class='competence-wrap red'>";
+                                        }
+                                        echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
+                                        echo "<p class='competence-desc'>". $competence['description'] ."</p>";
+                                        echo "<a href='./competenceEleve.php?id=". $competence['idCompetence'] . "'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
+                                        echo "</div>";
+                                        $competenceNumber++;
+                                        }
                                     else{
                                         break;
                                     }
@@ -134,7 +153,7 @@
                 </div>
 
                 <div class="mes-matieres">
-                    <h2 class="card-title">Mes matières</h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="#">Mes matieres</a></h2>
                     
                     <?php
                         $matiereNumber = 0;
@@ -145,7 +164,7 @@
                             echo "<div class='colorcircle'></div>";
                             echo "<h3 class='nom-matiere'>" . $matiere['nomMatiere'] . "</h3>";
                             echo "</div>";
-                            echo "<a class='arrow-link-matiere' href='./matiere.php?matiere=". $matiere['nomMatiere'] ."'><i class='fa-thin fa-arrow-right'></i></a>";
+                            echo "<a class='arrow-link-matiere' href='./matiere.php?matiere=". $matiere['idMatiere'] ."'><i class='fa-thin fa-arrow-right'></i></a>";
                             echo "</div>";
                             $matiereNumber++;
                             }
@@ -159,14 +178,14 @@
                 </div>
 
                 <div class="account">
-                    <h2 class='card-title'>Mon compte</h2>
+                    <h2 class='card-title'><a class="gen-card-link" href="AccountEleve.php">Mon compte</a></h2>
                     <div class="account-circle">
                         <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-user"></i></a>
                     </div>
                 </div>
                 
                 <div class="toutes-les-competences">
-                    <h2 class="card-title">Toutes les competences</h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="#">toutes les competences</a></h2>
                     <div class="ecole-btn-wrap">
                     <a class="btn-ecole-link" href=""></a><button class="ecole-btn">INSEEC</button></a>
 

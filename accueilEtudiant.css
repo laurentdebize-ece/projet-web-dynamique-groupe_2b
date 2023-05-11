@@ -8,6 +8,11 @@
 
 i{
     font-family: 'FontAwesome';
+    transition: transform 0.5s ease-in-out;
+}
+
+.fa-arrow-right:hover{
+    transform: rotateZ(90deg);
 }
 
 .page-wrapper{
@@ -25,6 +30,14 @@ i{
     align-items: center;
     padding-top: 20px;
 }
+
+.gen-card-link{
+    color: black;
+    text-decoration: none;
+
+}
+
+
 
 .profile-img{
     margin-bottom: 70px;
@@ -88,14 +101,39 @@ i{
 
 .menu-item{
     padding: 10px 0;
-    border-top: solid 1.5px black;
+    
 }
 
 .menu-link{
     text-decoration: none;
     color: black;
-    
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2;
 }
+
+.menu-link::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    top: -10px;
+    left: -15px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 10px;
+    transform: translateY(2px);
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.menu-link:hover::before{
+    width: 280px;
+}
+
+
+
+
 
 .menu-icon{
     place-self: flex-start;
@@ -182,13 +220,23 @@ i{
 }
 .matiere-container::before{
     content: '';
-    width: 150px;
+    width: 400px;
     position: absolute;
-    top: 0%;
+    top: -5px;
     height: 1px;
     background-color: rgba(0, 0, 0, 0.571);
     margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+    border-radius: 5px;
 }
+
+.matiere-container:hover::before{
+    height: 70px;
+    background-color: #C6DEC6;
+}
+
+
 
 .colorcircle{
     width: 20px;
@@ -236,7 +284,10 @@ i{
     text-transform: uppercase;
     position: relative;
     z-index: 1;
+    transition: all 0.5s ease-in-out ;
 }
+
+
 
 .card-title::before{
     content: '';
@@ -257,7 +308,11 @@ i{
     position: relative;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease-in-out ;
     
+}
+.competence-wrap:hover{
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .competence-title{
@@ -290,6 +345,12 @@ i{
 .arrow-link-matiere{
     text-decoration: none;
     color: black;
+    font-size: 1.6rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.arrow-link-matiere:hover {
+    transform: rotateZ(90deg);
 }
 
 
@@ -301,6 +362,12 @@ i{
     margin: 30px auto 0;
     box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.account-circle:hover{
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.3);
 }
 
 .user-link{
@@ -339,4 +406,14 @@ i{
 .btn-ecole-link{
     margin: 0;
     padding: 0;
+}
+
+.red{
+    background-color: rgb(219, 89, 89);
+}
+.green{
+    background-color: #C6DEC6;
+}
+.orange{
+    background-color: rgb(255, 191, 123);
 }
