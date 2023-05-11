@@ -40,3 +40,116 @@ form{
     border-radius: 0 0 0 100%;
     z-index: -1;
 }
+
+.competence-title{
+    font-size: 2.8rem;
+    font-weight: 800;
+}
+
+.competence-title-name{
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.description{
+    
+    font-weight: 400;
+    margin: 20px 0;
+
+}
+.form-snd-title{
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    
+}
+
+.description-text{
+    font-weight: 200;
+    margin-left: 20px;
+    font-size: 1.5rem;
+
+}
+
+.choix-eval{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    height: 30px;
+   
+    padding: 50px 0;
+    box-shadow: 0px 6px 10px  rgba(0, 0, 0, 0.25);
+}
+
+.radio-label{
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.radio-input{
+    display: none;
+ 
+ }
+
+
+
+.radio-input:checked + #acquislabel{
+    background: #C6D6C6;
+}
+
+.radio-input:checked + #encourslabel{
+    background: #ebb980;
+}
+
+.radio-input:checked + #nonlabel{
+    background: #dc5757;
+}
+
+.btn-evaluation{
+    justify-self: center;
+    width: 200px;
+    align-self: center;
+    margin-top: 35px;
+    height: 50px;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    border: none;
+    background: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-evaluation::before{
+    content: '';
+    position: absolute;
+    top: 50px;
+    width: 120px;
+    height: 5px;
+    background: #000000;
+    border-radius: 5px;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+.btn-evaluation:hover::before{
+    transform: scaleX(1);
+}
+
+.competenceCardWrapper{
+    display: flex;
+    flex-direction: column;
+   
+}
+

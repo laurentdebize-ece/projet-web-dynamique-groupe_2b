@@ -55,7 +55,7 @@ if($isAllowed == false){
 <body>
     <a class="home-link" href="./accueilEtudiant.php">  <i class="fa-solid fa-house"></i></a>
     <div class="green-circle-top-right"></div>
-    <form action="" class="competence-evaluation" class="form-evaluation">
+    <form action="./traitementCompetence.php?id=<?php echo $idCompetence; ?>" class="competence-evaluation" class="form-evaluation" method="post">
         <div class="competenceCardWrapper">
             <h1 class="competence-title">Ma competence : <span class="competence-title-name"> <?php echo $infoCompetence['nomCompetence'];?> </span> </h1>
             <div class="description">
@@ -64,22 +64,25 @@ if($isAllowed == false){
             </div>
             <div class="evaluation">
                 <h3 class="form-snd-title">Mon evaluation : </h3>
-                <label>
-                        <input type="radio" name="choix" value="0">
-                        Acquis
-                </label>
-                    <br>
-                <label>
-                        <input type="radio" name="choix" value="1">
-                        En cours d'acquisition
-                </label>
-                    <br>
-                <label>
-                        <input type="radio" name="choix" value="2">
-                        Pas acquis
-                </label>
+                <div class="choix-eval">
+
+                    <label>
+                            <input type="radio" name="choix" value="0" class="radio-input" id="Acquis" require>
+                            <label for="Acquis" class="radio-label" id="acquislabel">Acquis</label>
+                    </label>
+                        <br>
+                    <label>
+                            <input type="radio" name="choix" value="1" class="radio-input" id="encours" require>
+                            <label for="encours" class="radio-label" id="encourslabel">En cours d'acquisition</label>
+                    </label>
+                        <br>
+                    <label>
+                            <input type="radio" name="choix" value="2" class="radio-input" id="nonacquis" require>
+                            <label for="nonacquis" class="radio-label" id="nonlabel">Non acquis</label>
+                    </label>
+                </div>
             </div>
-            <button class="btn-evaluation" type="submit">Evaluer</button>
+            <button class="btn-evaluation" type="submit">M'évaluer</button>
         </div>
     </form>
 
