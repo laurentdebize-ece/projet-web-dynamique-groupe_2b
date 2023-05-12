@@ -27,14 +27,14 @@
     $_SESSION['idEleve'] = $idEleve['idEleve'];
     
 
-
-    $requeteMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere FROM Matiere WHERE ecole = :ecole AND promo = :promo");
-    $requeteMatiere->bindParam(':ecole', $_SESSION['ecole']);
-    $requeteMatiere->bindParam(':promo', $_SESSION['promo']);
+    $requeteMatiere = $bdd->prepare("SELECT Matiere.nomMatiere, Matiere.idMatiere FROM Matiere INNER JOIN MatiereClasse ON Matiere.idMatiere = MatiereClasse.idMatiere INNER JOIN Classe ON MatiereClasse.idClasse = Classe.idClasse INNER JOIN Eleve ON Eleve.idClasse = Classe.idClasse WHERE idEleve = :idEleve");
+    $requeteMatiere->bindParam(':idEleve', $_SESSION['idEleve']);
     $requeteMatiere->execute();
+    
 
     $matieres = $requeteMatiere->fetchAll(PDO::FETCH_ASSOC);
     $nbMatieres = $requeteMatiere->rowCount();
+
 
    
     $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description, Competence.idCompetence FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
@@ -89,7 +89,7 @@
                     <a href="./touteCompetenceEleve.php" class="menu-link">Mes competences</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Mes matières</a>
+                    <a href="./touteMatiereEleve.php" class="menu-link">Mes matières</a>
                 </li>
                 <li class="menu-item">
                     <a href="" class="menu-link">Compétences transverses</a>
@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="mes-matieres">
-                    <h2 class="card-title"><a class="gen-card-link" href="#">Mes matieres</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="./touteMatiereEleve.php">Mes matieres</a></h2>
                     
                     <?php
                         $matiereNumber = 0;
