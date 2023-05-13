@@ -34,7 +34,7 @@
                     <a href="./touteCompetenceEleve.php" class="menu-link">Utilisateurs</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Matières</a>
+                    <a href="gestionDesMatieres.php" class="menu-link">Matières</a>
                 </li>
                 <li class="menu-item">
                     <a href="" class="menu-link">Compétences</a>
@@ -62,14 +62,37 @@
             <div class="menu-part">
 
                 <div class="mes-competences">
-                    <h2 class='card-title'> <a class="gen-card-link" href="touteCompetenceEleve.php">Gerer les utilisateurs</a> </h2>
+                    <h2 class='card-title'> <a class="gen-card-link" href="gestionDesUtilisateurs.php">Gerer les utilisateurs</a> </h2>
                         <div class="competence-card">
-                           
+                
+
+                <div class="utilisateur">
+                    <div class="utilisateur-box-prof">
+                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-address-book"></i></a>
+                    </div>
+                    <h6 class="user-texte-prof">Professeurs</h6>
+                </div>
+                
+                <div class="utilisateur">
+                    <div class="utilisateur-box-eleve">
+                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-address-card"></i></a>
+                    </div>
+                    <h6 class="user-texte-eleve">Elèves</h6>
+
+                </div>
+
+
+
+
+
+
+
+
                         </div>
                 </div>
 
                 <div class="mes-matieres">
-                    <h2 class="card-title"><a class="gen-card-link" href="#">Mes matieres</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="gestionDesMatieres.php"> Gerer les matieres</a></h2>
                     
                 </div>
 

@@ -366,6 +366,65 @@ i{
     
 }
 
+
+.utilisateur-box-prof{
+    height: 200px;
+    background-color: #C7DDEA;
+    width: 200px;
+    border-radius: 10px;
+    border: solid 1px rgb(159, 159, 159);
+    margin: left;
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
+    position: left;
+    transition: all 0.3s ease-in-out;
+}
+
+.utilisateur-box-eleve{
+    height: 200px;
+    background-color: #C6DEC6;
+    width: 200px;
+    border-radius: 10px;
+    border: solid 1px rgb(159, 159, 159);
+    margin: left;
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
+    position: left;
+    transition: all 0.3s ease-in-out;
+}
+
+.utilisateur{
+    grid-column:1/2 ;
+    padding: 20px;
+}
+
+
+.fa-address-book{
+    font-size: 6rem;
+    color: black;
+    padding-right: 350px;
+}
+
+.fa-address-card{
+    font-size: 6rem;
+    color: black;
+    padding-left: 350px;
+}
+
+.user-texte-prof{
+    font-size: 1.7rem;
+    font-weight: 400;
+    padding-left: 30px;
+    position: absolute
+}
+
+.user-texte-eleve{
+    font-size: 1.7rem;
+    font-weight: 400;
+    padding-left: 60px;
+    position: absolute
+}
+
+
+
 .account-circle:hover{
     box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.3);
 }
@@ -408,6 +467,7 @@ i{
     padding: 0;
 }
 
+
 .red{
     background-color: rgb(219, 89, 89);
 }
@@ -417,3 +477,4 @@ i{
 .orange{
     background-color: rgb(255, 191, 123);
 }
+
