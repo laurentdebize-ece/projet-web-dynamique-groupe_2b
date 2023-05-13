@@ -17,6 +17,15 @@
 
     $noteCompetencesTransverse = $requeteNoteCompetenceTransverse->fetchAll(PDO::FETCH_ASSOC);
 
+    if(isset($_POST['tri'])){
+        if($_POST['tri'] == 'asc'){
+            rsort($competencesTransverse);
+        }else if($_POST['tri'] == 'desc'){
+            sort($competencesTransverse);
+        }
+    }
+
+
     
 
 
@@ -68,6 +77,16 @@
         ?>
 
     </div>
+
+
+    <form action="competencesTransverses.php" method="post" class="tri-form">
+        <label class="tri-label" for="tri">Trier par:</label>
+        <select name="tri" id="tri" class="select">
+        <option value="asc">Ordre alphabétique croissant</option>
+        <option value="desc">Ordre alphabétique décroissant</option>
+        </select>
+        <input class="btn-tri" type="submit" value="Trier">
+    </form>
 
     
 </body>

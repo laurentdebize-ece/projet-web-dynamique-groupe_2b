@@ -3,7 +3,6 @@
     require_once 'bdd.php';
 
     $idCompetence = $_GET['id'];
-    $prev = $_GET['prev'];
 
     if(isset($_POST['choix'])){
         $eval = $_POST['choix'];

@@ -95,7 +95,7 @@
                     <a href="./competencesTransverses.php" class="menu-link">Compétences transverses</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Toutes les compétences</a>
+                    <a href="./competencesGlobal.php" class="menu-link">Toutes les compétences</a>
                 </li>
                 <li class="menu-item">
                     <a href="./AccountEleve.php" class="menu-link">Mon compte</a>
