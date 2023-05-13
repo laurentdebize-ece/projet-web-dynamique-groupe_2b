@@ -185,13 +185,13 @@
                 </div>
                 
                 <div class="toutes-les-competences">
-                    <h2 class="card-title"><a class="gen-card-link" href="#">toutes les competences</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="./competencesGlobal.php">toutes les competences</a></h2>
                     <div class="ecole-btn-wrap">
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">INSEEC</button></a>
+                    <a class="btn-ecole-link" href="./CompetenceEcole.php?id=3"><button class="ecole-btn">INSEEC</button></a>
 
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">ECE</button></a>
+                    <a class="btn-ecole-link" href="./CompetenceEcole.php?id=1"><button class="ecole-btn">ECE</button></a>
 
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">HEIP</button></a>
+                    <a class="btn-ecole-link" href="./CompetenceEcole.php?id=2"><button class="ecole-btn">HEIP</button></a>
                     </div>
                 </div>
                 
