@@ -1,3 +1,29 @@
+<?php
+    session_start();
+    require_once 'bdd.php';
+
+    
+    $idUtilisateur = $_SESSION['idUtilisateur'];
+
+    $requeteInfoAdmin = $bdd->prepare("SELECT * FROM Admin WHERE idUtilisateur = :idUtilisateur");
+    $requeteInfoAdmin->bindParam(':idUtilisateur', $idUtilisateur);
+    $requeteInfoAdmin->execute();
+
+    $infoAdmin = $requeteInfoAdmin->fetch(PDO::FETCH_ASSOC);
+
+
+    $requeteIdAdmin = $bdd->prepare("SELECT idAdmin FROM Admin WHERE idUtilisateur = :idUtilisateur");
+    $requeteIdAdmin->bindParam(':idUtilisateur', $idUtilisateur);
+
+    $idAdmin = $requeteIdAdmin->fetch(PDO::FETCH_ASSOC);
+
+
+    $_SESSION['nom'] = $infoAdmin['nomAdmin'];
+    $_SESSION['prenom'] = $infoAdmin['prenomAdmin'];
+    $_SESSION['mail'] = $infoAdmin['mail'];
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +49,15 @@
                 <div class="photo"></div>
             </div>
             <div class="user-info">
-            <h6 class="user-name">Elon Musk</h6>
-            <h6 class="user-school">ECE Lyon</h6>
+            <h4 class="user-name"><?php echo $_SESSION['nom']; ?></h4>
+            <h6 class="user-school"></h6>
 
 
                 <h6 class="user-statut">Administrateur</h6>
             </div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="./touteCompetenceEleve.php" class="menu-link">Utilisateurs</a>
+                    <a href="listeDesUtilisateurs.php" class="menu-link">Utilisateurs</a>
                 </li>
                 <li class="menu-item">
                     <a href="gestionDesMatieres.php" class="menu-link">Matières</a>
@@ -40,14 +66,16 @@
                     <a href="" class="menu-link">Compétences</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Mon compte</a>
+                    <a href="./AccountAdmin.php" class="menu-link">Mon compte</a>
                 </li>
                 <li class="menu-item">
                 </li>
             </ul>
             <div class="menu-icon">
                 <a href="" class="icon-link"><i class="fa-solid fa-gear"></i>    </a>
-                        
+                <br>
+                <br>
+                <a href="Login.php" class="icon-link"><i class="fa-solid fa-power-off"></i><a href="" class="logout-link"></a></a>         
             </div>
         </section>
             
@@ -68,23 +96,18 @@
 
                 <div class="utilisateur">
                     <div class="utilisateur-box-prof">
-                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-address-book"></i></a>
+                        <a href="./AccountAdmin.php" class="user-link"> <i class="fa-solid fa-address-book"></i></a>
                     </div>
                     <h6 class="user-texte-prof">Professeurs</h6>
                 </div>
                 
                 <div class="utilisateur">
                     <div class="utilisateur-box-eleve">
-                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-address-card"></i></a>
+                        <a href="./AccountAdmin.php" class="user-link"> <i class="fa-solid fa-address-card"></i></a>
                     </div>
                     <h6 class="user-texte-eleve">Elèves</h6>
 
                 </div>
-
-
-
-
-
 
 
 
@@ -93,13 +116,18 @@
 
                 <div class="mes-matieres">
                     <h2 class="card-title"><a class="gen-card-link" href="gestionDesMatieres.php"> Gerer les matieres</a></h2>
-                    
+                    <br>
+                    <h2><a href="gestionDesMatieres.php" class="matiere-link">Ajouter une matière</a><h2>
+                    <br>
+                    <h2><a href="gestionDesMatieres.php" class="matiere-link">Voir toutes les matières</a><h2>
+            
                 </div>
 
+
                 <div class="account">
-                    <h2 class='card-title'><a class="gen-card-link" href="AccountEleve.php">Mon compte</a></h2>
+                    <h2 class='card-title'><a class="gen-card-link" href="./AccountAdmin.php">Mon compte</a></h2>
                     <div class="account-circle">
-                        <a href="./AccountEleve.php" class="user-link"> <i class="fa-solid fa-user"></i></a>
+                        <a href="./AccountAdmin.php" class="user-link"> <i class="fa-solid fa-user"></i></a>
                     </div>
                 </div>
                 

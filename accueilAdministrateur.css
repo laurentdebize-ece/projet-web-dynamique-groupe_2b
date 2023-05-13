@@ -131,10 +131,6 @@ i{
     width: 280px;
 }
 
-
-
-
-
 .menu-icon{
     place-self: flex-start;
     margin-left: 20px;
@@ -251,6 +247,7 @@ i{
     font-size: 2rem;
     margin-left: 10px;
 }
+
 
 
 
@@ -379,16 +376,25 @@ i{
     transition: all 0.3s ease-in-out;
 }
 
+.utilisateur-box-prof:hover{
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.3);
+}
+
+
 .utilisateur-box-eleve{
     height: 200px;
     background-color: #C6DEC6;
     width: 200px;
     border-radius: 10px;
     border: solid 1px rgb(159, 159, 159);
-    margin: left;
+    margin: right;
     box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.1);
-    position: left;
+    position: right;
     transition: all 0.3s ease-in-out;
+}
+
+.utilisateur-box-eleve:hover{
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.3);
 }
 
 .utilisateur{
@@ -419,10 +425,9 @@ i{
 .user-texte-eleve{
     font-size: 1.7rem;
     font-weight: 400;
-    padding-left: 60px;
+    padding-left: 65px;
     position: absolute
 }
-
 
 
 .account-circle:hover{
@@ -478,3 +483,35 @@ i{
     background-color: rgb(255, 191, 123);
 }
 
+
+
+.matiere-link{
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.matiere-link::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    top: -10px;
+    left: -15px;
+    background-color: #DEC7C6;
+    margin-right: 10px;
+    transform: translateY(2px);
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.matiere-link:hover::before{
+    width: 280px;
+}
+
+.fa-power-off:hover {
+    transform: scale(1.5);
+}
