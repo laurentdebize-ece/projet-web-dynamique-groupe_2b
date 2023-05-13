@@ -3,7 +3,7 @@
     session_start();
     require_once 'bdd.php';
 
-    $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description, Competence.idCompetence FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
+    $requeteCompetence = $bdd->prepare("SELECT idCompetence, nomCompetence, description FROM Competence");
     $requeteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);
     $requeteCompetence->execute();
 
@@ -33,7 +33,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="touteCompetenceEleve.css">
+    <link rel="stylesheet" href="competencesGlobal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@200;300;400;800&display=swap" rel="stylesheet">
@@ -46,10 +46,11 @@
         <i class="fas fa-home"></i>
     </a>
     <div class="green-circle-top-right"></div>
-    <h1 class="page-title">Mes compétences</h1>
+    <h1 class="page-title">Toutes les compétences</h1>
     <div class="competence-card-container">
         <?php
             foreach($competences as $competence){
+                $note = -1;
                 foreach($noteCompetences as $noteCompetence){
                     if($noteCompetence['idCompetence'] == $competence['idCompetence']){
                         $note = $noteCompetence['note'];
@@ -61,20 +62,25 @@
                     echo '<div class="competence-card orange">';
                 }else if($note == 2){
                     echo '<div class="competence-card red">';
+                }elseif($note == -1) {
+                    echo '<div class="competence-card notAssigned">';
                 }
                 echo '<h2 class="competence-title"> '.$competence['nomCompetence'].' </h2>';
                 echo '<p class="competence-description"> '.$competence['description'].' </p>';
-                echo '<a href="./competenceEleve.php?id='.$competence['idCompetence'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
+
+                if($note != -1){
+                    echo '<a href="./competenceEleve.php?id='.$competence['idCompetence'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
+                }else{
+                    echo '<a href="./ajoutCompetence.php?id='.$competence['idCompetence'].'" class="competence-link"><i class="fa-solid fa-plus"></i> </a>';
+                }
                 echo '</div>';
             }
-
-
 
         ?>
 
     </div>
 
-    <form action="touteCompetenceEleve.php" method="post" class="tri-form">
+    <form action="competencesGlobal.php" method="post" class="tri-form">
         <label class="tri-label" for="tri">Trier par:</label>
         <select name="tri" id="tri" class="select">
         <option value="asc">Ordre alphabétique croissant</option>
