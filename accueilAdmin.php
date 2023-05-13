@@ -63,7 +63,7 @@
                     <a href="gestionDesMatieres.php" class="menu-link">Matières</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Compétences</a>
+                    <a href="./gestionDesCompetences.php" class="menu-link">Compétences</a>
                 </li>
                 <li class="menu-item">
                     <a href="./AccountAdmin.php" class="menu-link">Mon compte</a>
@@ -90,21 +90,24 @@
             <div class="menu-part">
 
                 <div class="mes-competences">
-                    <h2 class='card-title'> <a class="gen-card-link" href="gestionDesUtilisateurs.php">Gerer les utilisateurs</a> </h2>
+                    <h2 class='card-title'> <a class="gen-card-link" href="./gestionDesUtilisateurs.php">Gerer les utilisateurs</a> </h2>
                         <div class="competence-card">
                 
 
                 <div class="utilisateur">
                     <div class="utilisateur-box-prof">
-                        <a href="./AccountAdmin.php" class="user-link"> <i class="fa-solid fa-address-book"></i></a>
+                        <a href="./AccountAdmin.php" class="user-link"> </a>
+                        <div><i class="fa-solid fa-address-book"></i></div>
                     </div>
                     <h6 class="user-texte-prof">Professeurs</h6>
                 </div>
                 
                 <div class="utilisateur">
                     <div class="utilisateur-box-eleve">
-                        <a href="./AccountAdmin.php" class="user-link"> <i class="fa-solid fa-address-card"></i></a>
+                    <a href="./AccountAdmin.php" class="user-link"> </a>
+                        <div><i class="fa-solid fa-address-card"></i></div>
                     </div>
+                    
                     <h6 class="user-texte-eleve">Elèves</h6>
 
                 </div>
@@ -115,7 +118,7 @@
                 </div>
 
                 <div class="mes-matieres">
-                    <h2 class="card-title"><a class="gen-card-link" href="gestionDesMatieres.php"> Gerer les matieres</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="./gestionDesMatieres.php"> Gerer les matieres</a></h2>
                     <br>
                     <h2><a href="gestionDesMatieres.php" class="matiere-link">Ajouter une matière</a><h2>
                     <br>
@@ -132,13 +135,13 @@
                 </div>
                 
                 <div class="toutes-les-competences">
-                    <h2 class="card-title"><a class="gen-card-link" href="#">competences</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="./gestionDesCompetences.php">competences</a></h2>
                     <div class="ecole-btn-wrap">
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">Ajouter une compétence</button></a>
+                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Ajouter une compétence</button></a>
 
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">Compétences transverses</button></a>
+                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Compétences transverses</button></a>
 
-                    <a class="btn-ecole-link" href=""></a><button class="ecole-btn">Toutes les compétences</button></a>
+                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Toutes les compétences</button></a>
                     </div>
                 </div>
                 
