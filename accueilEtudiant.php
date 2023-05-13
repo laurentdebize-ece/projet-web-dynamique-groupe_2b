@@ -92,7 +92,7 @@
                     <a href="./touteMatiereEleve.php" class="menu-link">Mes matières</a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">Compétences transverses</a>
+                    <a href="./competencesTransverses.php" class="menu-link">Compétences transverses</a>
                 </li>
                 <li class="menu-item">
                     <a href="" class="menu-link">Toutes les compétences</a>

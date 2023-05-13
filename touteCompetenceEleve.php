@@ -14,6 +14,9 @@
 
     $noteCompetences = $requeteNoteCompetence->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +58,10 @@
                 echo '<a href="./competenceEleve.php?id='.$competence['idCompetence'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
                 echo '</div>';
             }
+
+   
+
+
         ?>
 
     </div>

@@ -60,7 +60,7 @@
         width: 100px;
     }
     50%{
-        width: 500px;
+        width: 800px;
     }
     100%{
         width: 100px;
@@ -125,8 +125,3 @@
     z-index: -1;
 }
 
-.transverse{
-    border-radius: 50px;
-    padding: 20px;
-    
-}
