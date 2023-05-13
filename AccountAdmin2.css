@@ -24,7 +24,7 @@
     transform: scale(1.3);
     opacity: 1;
     pointer-events: auto;
-    animation: spin 1s;
+    animation: spin 0.7s;
     
 
 }
@@ -33,9 +33,12 @@
     0% {
       transform: rotate(0deg) scale(1);
     }
-    70% {
-      transform: rotate(360deg) scale(1.5);
+    50% {
+      transform: rotate(-270deg) scale(1.5);
     }
+    70% {
+        transform:  rotate(-360deg) scale(.8);
+      }
   }
   
 .fa-house:hover::before {
