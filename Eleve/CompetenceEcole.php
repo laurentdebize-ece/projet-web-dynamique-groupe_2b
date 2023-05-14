@@ -1,7 +1,7 @@
 
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
     $idEcole = $_GET['id'];
 

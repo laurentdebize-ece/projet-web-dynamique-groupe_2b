@@ -1,17 +1,22 @@
 <?php
 session_start();
-require_once 'bdd.php';
+require_once '../bdd.php';
 $idCompetence = $_GET['id'];
 
-$requeteVerifTransverse = $bdd->prepare("SELECT idCompetenceTransverse FROM TransverseNote WHERE idEleve = :idEleve");
-$requeteVerifTransverse->bindParam(':idEleve', $_SESSION['idEleve']);
-$requeteVerifTransverse->execute();
+$requeteVerif = $bdd->prepare("SELECT  Competence.idCompetence FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
+$requeteVerif->bindParam(':idEleve', $_SESSION['idEleve']);
+$requeteVerif->execute();
 
-$competencesTransverse = $requeteVerifTransverse->fetchAll(PDO::FETCH_ASSOC);
+$competences = $requeteVerif->fetchAll(PDO::FETCH_ASSOC);
 
+$requeteStatutEvaluation = $bdd->prepare("SELECT * FROM Note WHERE idEleve = :idEleve AND idCompetence = :idCompetence");
+$requeteStatutEvaluation->bindParam(':idEleve', $_SESSION['idEleve']);
+$requeteStatutEvaluation->bindParam(':idCompetence', $idCompetence);
+$requeteStatutEvaluation->execute();
 
+$statutEvaluation = $requeteStatutEvaluation->fetch(PDO::FETCH_ASSOC);
 
-$requeteInfoCompetence = $bdd->prepare("SELECT * FROM CompetenceTransverse WHERE idCompetenceTransverse = :idCompetence");
+$requeteInfoCompetence = $bdd->prepare("SELECT * FROM Competence WHERE idCompetence = :idCompetence");
 $requeteInfoCompetence->bindParam(':idCompetence', $idCompetence);
 $requeteInfoCompetence->execute();
 
@@ -22,8 +27,8 @@ $infoCompetence = $requeteInfoCompetence->fetch(PDO::FETCH_ASSOC);
 
 $isAllowed = false;
 
-foreach($competencesTransverse as $competenceTransverse){
-    if($competenceTransverse['idCompetenceTransverse'] == $idCompetence){
+foreach($competences as $competence){
+    if($competence['idCompetence'] == $idCompetence){
         $isAllowed = true;
     }
 }
@@ -50,9 +55,9 @@ if($isAllowed == false){
 <body>
     <a class="home-link" href="./accueilEtudiant.php">  <i class="fa-solid fa-house"></i></a>
     <div class="green-circle-top-right"></div>
-    <form action="./traitementEvalTransverse.php?id=<?php echo $idCompetence; ?>" class="competence-evaluation" class="form-evaluation" method="post">
+    <form action="./traitementCompetence.php?id=<?php echo $idCompetence; ?>" class="competence-evaluation" class="form-evaluation" method="post">
         <div class="competenceCardWrapper">
-            <h1 class="competence-title">Ma competence : <span class="competence-title-name"> <?php echo $infoCompetence['nom'];?> </span> </h1>
+            <h1 class="competence-title">Ma competence : <span class="competence-title-name"> <?php echo $infoCompetence['nomCompetence'];?> </span> </h1>
             <div class="description">
                 <h3 class="form-snd-title">Description :</h3>
                 <p class="description-text"> <?php echo $infoCompetence['description'] ?> </p>

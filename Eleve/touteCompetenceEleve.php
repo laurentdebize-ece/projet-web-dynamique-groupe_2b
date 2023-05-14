@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
     $requeteCompetence = $bdd->prepare("SELECT Competence.nomCompetence, Competence.description, Competence.idCompetence FROM Competence  INNER JOIN Note ON Competence.idCompetence = Note.idCompetence WHERE Note.idEleve = :idEleve");
     $requeteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);
@@ -52,6 +52,7 @@
                 foreach($noteCompetences as $noteCompetence){
                     if($noteCompetence['idCompetence'] == $competence['idCompetence']){
                         $note = $noteCompetence['note'];
+                        $statutEval = $noteCompetence['Validation'];
                     }
                 }
                 if($note == 0){
@@ -63,6 +64,33 @@
                 }
                 echo '<h2 class="competence-title"> '.$competence['nomCompetence'].' </h2>';
                 echo '<p class="competence-description"> '.$competence['description'].' </p>';
+                switch($statutEval){
+                    case '0':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Evaluez vous !</p>';
+                        echo '</div>';
+                        break;
+                    case '1':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">En attente de validation.</p>';
+                        echo '</div>';
+                        break;
+                    case '2':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Non validé</p>';
+                        echo '</div>';
+                        break;
+                    case '3':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Sans commentaire</p>';
+                        echo '</div>';
+                        break;
+                    case '3':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Validé</p>';
+                        echo '</div>';
+                        break;
+                }
                 echo '<a href="./competenceEleve.php?id='.$competence['idCompetence'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
                 echo '</div>';
             }

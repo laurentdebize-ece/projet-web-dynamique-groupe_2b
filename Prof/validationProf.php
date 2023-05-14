@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello prof</h1>
+    
 </body>
 </html>

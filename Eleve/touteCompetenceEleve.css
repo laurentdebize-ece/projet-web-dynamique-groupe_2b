@@ -105,7 +105,7 @@
     color: black;
     font-size: 2rem;
     font-weight: 400;
-    margin-top: 65px;
+    margin-top: 50px;
     align-self: flex-end;
     transition: transform 0.5s ease-in-out;
 }

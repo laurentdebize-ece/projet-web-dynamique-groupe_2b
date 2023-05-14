@@ -1,7 +1,7 @@
 
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
     $requeteCompetence = $bdd->prepare("SELECT idCompetence, nomCompetence, description FROM Competence");
     $requeteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
     $idMatiere = $_GET['matiere'];
 

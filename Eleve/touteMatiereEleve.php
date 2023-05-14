@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'bdd.php';
+require_once '../bdd.php';
 
 $requeteMatiere = $bdd->prepare("SELECT Matiere.nomMatiere, Matiere.idMatiere FROM Matiere INNER JOIN MatiereClasse ON Matiere.idMatiere = MatiereClasse.idMatiere INNER JOIN Classe ON MatiereClasse.idClasse = Classe.idClasse INNER JOIN Eleve ON Eleve.idClasse = Classe.idClasse WHERE idEleve = :idEleve");
 $requeteMatiere->bindParam(':idEleve', $_SESSION['idEleve']);
