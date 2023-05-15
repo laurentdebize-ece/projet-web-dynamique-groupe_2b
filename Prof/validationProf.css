@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia sans';
+}
+
+.home-link{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.page-title{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+}
+
+.page-title::after{
+    content: '';
+    width: 100px;
+    height: 5px;
+    background-color: #000;
+    display: block;
+    margin: 20px auto;
+    animation: underline 3s ease-in-out infinite;
+}
+
+@keyframes underline {
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 700px;
+    }
+    100%{
+        width: 0;
+    }
+}
+
+.red-circle-top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background-color: #db7878;
+    border-radius: 0 0 0 100%;
+    z-index: -1;
+}
+
+.competence-card-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.competence-card{
+    width: 800px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 20px auto;
+    
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.red{
+    background: rgb(219, 89, 89);
+}
+
+.green{
+    background: #C6D6C6;
+}
+
+.orange{
+    background: rgb(255, 191, 123);
+
+}
+.competence-eleve{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.competence-title{
+    font-size: 1.5rem;
+}
+.competence-description{
+    font-size: 1.3rem;
+}
+
+.eval-link{
+    color: black;
+    font-size: 2rem;
+    align-self: flex-end;
+    margin-top: 40px;
+}
+
+

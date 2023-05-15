@@ -85,7 +85,7 @@
                         echo '<p class="competence-status">Sans commentaire</p>';
                         echo '</div>';
                         break;
-                    case '3':
+                    case '4':
                         echo '<div class="competence-status-container">';
                         echo '<p class="competence-status">Validé</p>';
                         echo '</div>';

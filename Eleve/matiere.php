@@ -39,7 +39,7 @@
 
     $competences = $requeteCompetence->fetchAll(PDO::FETCH_ASSOC);
 
-    $requeteNoteCompetence = $bdd->prepare("SELECT idCompetence, note FROM Note WHERE idEleve = :idEleve AND idMatiere = :idMatiere");
+    $requeteNoteCompetence = $bdd->prepare("SELECT * FROM Note WHERE idEleve = :idEleve AND idMatiere = :idMatiere");
     $requeteNoteCompetence->bindParam(':idEleve', $_SESSION['idEleve']);
     $requeteNoteCompetence->bindParam(':idMatiere', $idMatiere);
     $requeteNoteCompetence->execute();
@@ -75,7 +75,7 @@
             foreach($noteCompetence as $note){
                 if($note['idCompetence'] == $competence['idCompetence']){
                     $noteDeCompetence = $note['note'];
-                    
+                    $statutEval = $note['Validation'];
                 }
             }
             if($noteDeCompetence == 0){
@@ -86,8 +86,37 @@
                 echo '<div class="competence-card red">';
             }
             
+            
+            
             echo '<h2 class="competence-title">'.$competence['nomCompetence'].'</h2>';
             echo '<p class="description-competence">'.$competence['description'].'</p>';
+            switch($statutEval){
+                case '0':
+                    echo '<div class="competence-status-container">';
+                    echo '<p class="competence-status">Evaluez vous !</p>';
+                    echo '</div>';
+                    break;
+                case '1':
+                    echo '<div class="competence-status-container">';
+                    echo '<p class="competence-status">En attente de validation.</p>';
+                    echo '</div>';
+                    break;
+                case '2':
+                    echo '<div class="competence-status-container">';
+                    echo '<p class="competence-status">Non validé</p>';
+                    echo '</div>';
+                    break;
+                case '3':
+                    echo '<div class="competence-status-container">';
+                    echo '<p class="competence-status">Sans commentaire</p>';
+                    echo '</div>';
+                    break;
+                case '4':
+                    echo '<div class="competence-status-container">';
+                    echo '<p class="competence-status">Validé</p>';
+                    echo '</div>';
+                    break;
+            }
             echo '<a class="competence-link" href="competenceEleve.php?id='.$competence['idCompetence'].'"><i class="fa-solid fa-arrow-right"></i></a>';
             echo '</div>';
         }

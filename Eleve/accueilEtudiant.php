@@ -127,6 +127,7 @@
                                         foreach( $notes as $note){
                                             if($note['idCompetence'] == $competence['idCompetence']){
                                                 $noteCompetence = $note['note'];
+                                                $statutEval = $note['Validation'];
                                             }
                                         }
                                         if($noteCompetence == 0){
@@ -140,6 +141,33 @@
                                         }
                                         echo "<h3 class='competence-title'>" . $competence['nomCompetence'] . "</h3>";
                                         echo "<p class='competence-desc'>". $competence['description'] ."</p>";
+                                        switch($statutEval){
+                                            case '0':
+                                                echo '<div class="competence-status-container">';
+                                                echo '<p class="competence-status">Evaluez vous !</p>';
+                                                echo '</div>';
+                                                break;
+                                            case '1':
+                                                echo '<div class="competence-status-container">';
+                                                echo '<p class="competence-status">En attente de validation.</p>';
+                                                echo '</div>';
+                                                break;
+                                            case '2':
+                                                echo '<div class="competence-status-container">';
+                                                echo '<p class="competence-status">Non validé</p>';
+                                                echo '</div>';
+                                                break;
+                                            case '3':
+                                                echo '<div class="competence-status-container">';
+                                                echo '<p class="competence-status">Sans commentaire</p>';
+                                                echo '</div>';
+                                                break;
+                                            case '4':
+                                                echo '<div class="competence-status-container">';
+                                                echo '<p class="competence-status">Validé</p>';
+                                                echo '</div>';
+                                                break;
+                                        }
                                         echo "<a href='./competenceEleve.php?id=". $competence['idCompetence'] . "'><i class='fa-thin fa-arrow-right arrow2'></i></a>";
                                         echo "</div>";
                                         $competenceNumber++;
