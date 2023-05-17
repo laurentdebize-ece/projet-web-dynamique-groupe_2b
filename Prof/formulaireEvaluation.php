@@ -47,13 +47,20 @@
      <title>Document</title>
 </head>
 <body>
+<a href="./accueilProf.php" class="home-link">
+        <i class="fas fa-home"></i>
+    </a>
      <h1 class="page-title">Evaluer mon élève</h1>
+     <div class="red-circle-top-right"></div>
+
      <div class="evaluation-form-wrapper">
           <h2 class="eleve-name"><?php echo $competence['prenomEleve'] . " " . $competence['nomEleve'];  ?></h2>
           <h3 class="competence-title"><?php echo $competence['nomCompetence'] ?></h3>
           <p class="competence-description"> <?php echo $competence['description']?></p>
           <div class="eval-eleve">
                <p class="eval-eleve-desc">Evaluation de l'élève :</p>
+               <span class="eleve-note">
+
                <?php 
                     if($competence['note'] == 0){
                          echo 'Acquis';
@@ -63,14 +70,16 @@
                          echo 'Non acquis';
                     }
                ?>
+               </span>
           </div>
           <form action="./traitementEvalProf.php?idEleve=<?php echo $competence['idEleve']; ?>&idComp=<?php echo $competence['idCompetence'] ?>" class="competence-evaluation" class="evaluation-form" method="post">
                <h2 class="form-title">Mon évaluation de l'élève</h2>
                <div class="choix-eval">
 
+
                     <label>
-                         <input type="radio" name="choix" value="4" class="radio-input" id="Acquis" require>
-                         <label for="Acquis" class="radio-label" id="acquislabel">Acquis</label>
+                         <input type="radio" name="choix" value="2" class="radio-input" id="nonacquis" require>
+                         <label for="nonacquis" class="radio-label" id="nonlabel">Non acquis</label>
                     </label>
                     <br>
                     <label>
@@ -78,11 +87,14 @@
                          <label for="encours" class="radio-label" id="encourslabel">En cours d'acquisition</label>
                     </label>
                     <br>
+
                     <label>
-                         <input type="radio" name="choix" value="2" class="radio-input" id="nonacquis" require>
-                         <label for="nonacquis" class="radio-label" id="nonlabel">Non acquis</label>
+                         <input type="radio" name="choix" value="4" class="radio-input" id="Acquis" require>
+                         <label for="Acquis" class="radio-label" id="acquislabel">Acquis</label>
                     </label>
+                   
                </div>
+               <input type="text" placeholder="Message pour l'élève :" class="prof-msg-input" name="message">
                <button class="btn-evaluation" type="submit">Evaluer</button>
           </form>
 

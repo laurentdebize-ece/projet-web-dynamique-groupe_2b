@@ -33,13 +33,13 @@
 
 @keyframes underline {
     0%{
-        width: 0;
+        width: 20px;
     }
     50%{
         width: 700px;
     }
     100%{
-        width: 0;
+        width: 20px;
     }
 }
 
