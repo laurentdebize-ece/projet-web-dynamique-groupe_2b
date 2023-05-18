@@ -76,7 +76,7 @@
   
 .fa-users:hover::before {
     outline: 20px solid transparent;
-    transition: opacity 0.3s ease-in-out; /* transition fluide */
+    transition: opacity 0.3s ease-in-out;
     content: "\f0a8";
   }
 

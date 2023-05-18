@@ -59,13 +59,13 @@
             </div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="listeDesUtilisateurs.php" class="menu-link">Utilisateurs</a>
+                    <a href="./listeDesUtilisateurs.php" class="menu-link">Liste des utilisateurs</a>
                 </li>
                 <li class="menu-item">
-                    <a href="gestionDesMatieres.php" class="menu-link">Matières</a>
+                    <a href="gestionDesMatieres.php" class="menu-link">Liste des matières</a>
                 </li>
                 <li class="menu-item">
-                    <a href="./gestionDesCompetences.php" class="menu-link">Compétences</a>
+                    <a href="./ListeDesCompetences.php" class="menu-link">Liste des compétences</a>
                 </li>
                 <li class="menu-item">
                     <a href="./AccountAdmin.php" class="menu-link">Mon compte</a>
@@ -150,11 +150,11 @@
                 <div class="toutes-les-competences">
                     <h2 class="card-title"><a class="gen-card-link" href="./gestionDesCompetences.php">competences</a></h2>
                     <div class="ecole-btn-wrap">
-                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Ajouter une compétence</button></a>
+                    <button class="ecole-btn" onclick="window.location.href = './modificationCompetences.php';">Modifier une compétence</button>
 
-                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Compétences transverses</button></a>
-
-                    <a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn">Toutes les compétences</button></a>
+                    <button class="ecole-btn" onclick="window.location.href = './modificationCompentencesTransverses.php';">Modifier une compétences transverses</button></a>
+                    
+                    <button class="ecole-btn" onclick="window.location.href = './ListeDesCompetences.php';">Modifier une compétences transverses</button></a>
                     </div>
                 </div>
                 
@@ -165,3 +165,4 @@
 
 </body>
 </html>
+
