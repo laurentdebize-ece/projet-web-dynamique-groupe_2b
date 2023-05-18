@@ -53,6 +53,7 @@
                     if($noteCompetence['idCompetence'] == $competence['idCompetence']){
                         $note = $noteCompetence['note'];
                         $statutEval = $noteCompetence['Validation'];
+                        $profMessage = $noteCompetence['Message'];
                     }
                 }
                 if($note == 0){
@@ -77,17 +78,20 @@
                         break;
                     case '2':
                         echo '<div class="competence-status-container">';
-                        echo '<p class="competence-status">Non validé</p>';
+                        echo '<p class="competence-status">Avis du professeur : Non validé</p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessage.'</p>';
                         echo '</div>';
                         break;
                     case '3':
                         echo '<div class="competence-status-container">';
-                        echo '<p class="competence-status">Sans commentaire</p>';
+                        echo '<p class="competence-status">Avis du professeur : En cours d acquisition </p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessage.'</p>';
                         echo '</div>';
                         break;
                     case '4':
                         echo '<div class="competence-status-container">';
-                        echo '<p class="competence-status">Validé</p>';
+                        echo '<p class="competence-status"> Avis du professeur : Validé</p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessage.'</p>';
                         echo '</div>';
                         break;
                 }

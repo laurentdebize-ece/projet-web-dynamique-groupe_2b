@@ -102,7 +102,7 @@
                 </li>
             </ul>
             <div class="menu-icon">
-                <a href="" class="icon-link"><i class="fa-solid fa-gear"></i>    </a>
+                <a href="../traitementLogout.php" class="icon-link"><i class="fa-solid fa-right-from-bracket"></i> </a>
                         
             </div>
         </section>
@@ -128,6 +128,7 @@
                                             if($note['idCompetence'] == $competence['idCompetence']){
                                                 $noteCompetence = $note['note'];
                                                 $statutEval = $note['Validation'];
+                                                $profMessage = $note['Message'];
                                             }
                                         }
                                         if($noteCompetence == 0){
@@ -155,16 +156,20 @@
                                             case '2':
                                                 echo '<div class="competence-status-container">';
                                                 echo '<p class="competence-status">Non validé</p>';
+                                                echo '<p class="prof-message">Message du prof : ' . $profMessage . '</p>';
                                                 echo '</div>';
                                                 break;
                                             case '3':
                                                 echo '<div class="competence-status-container">';
                                                 echo '<p class="competence-status">Sans commentaire</p>';
+                                                echo '<p class="prof-message">Message du prof : ' . $profMessage . '</p>';
                                                 echo '</div>';
                                                 break;
                                             case '4':
                                                 echo '<div class="competence-status-container">';
                                                 echo '<p class="competence-status">Validé</p>';
+                                                echo '<p class="prof-message">Message du prof : ' . $profMessage . '</p>';
+
                                                 echo '</div>';
                                                 break;
                                         }

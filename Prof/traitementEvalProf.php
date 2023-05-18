@@ -7,6 +7,7 @@ $eleve = $_GET['idEleve'];
 
 if(isset($_POST['choix'])){
     $eval = $_POST['choix'];
+    $message = $_POST['message'];
     if($eval == 4){
         $note = 0;
     }else if($eval == 3){
@@ -20,13 +21,16 @@ if(isset($_POST['choix'])){
 
 //update de la competence de l'utilisateur
 
-$requetUpdate = $bdd->prepare("UPDATE Note SET validation = :evaluation, note = :note WHERE idEleve = :idEleve AND idCompetence = :idCompetence");
+$requetUpdate = $bdd->prepare("UPDATE Note SET validation = :evaluation, note = :note, Message = :message WHERE idEleve = :idEleve AND idCompetence = :idCompetence");
 $requetUpdate->bindParam(':evaluation', $eval);
 $requetUpdate->bindParam(':note', $note);
+$requetUpdate->bindParam(':message', $message);
 $requetUpdate->bindParam(':idEleve', $eleve);
 $requetUpdate->bindParam(':idCompetence', $comp);
 $requetUpdate->execute();
 
+
+header('Location: ./accueilProf.php');
 
 
 
