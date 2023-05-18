@@ -437,15 +437,18 @@ transition: all 0.3s ease-in-out;}
 .user-texte-prof{
     font-size: 1.7rem;
     font-weight: 400;
+    position: absolute;
     padding-left: 30px;
-    position: absolute
+    padding-top: 7px;
 }
 
 .user-texte-eleve{
     font-size: 1.7rem;
     font-weight: 400;
-    padding-left: 65px;
-    position: absolute
+    position: absolute;
+    text-align: center;
+    padding-left:63px;
+    padding-top: 7px;
 }
 
 

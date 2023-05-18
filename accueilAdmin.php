@@ -45,13 +45,15 @@
                 <span class="left-title-span">Omnes</span>
                 MySkills
             </h1>
+
             <div class="profile-img">
-                <div class="photo"></div>
+                <div class="photo">
+
+                </div>
             </div>
             <div class="user-info">
             <h4 class="user-name"><?php echo $_SESSION['nom']; ?></h4>
             <h6 class="user-school"></h6>
-
 
                 <h6 class="user-statut">Administrateur</h6>
             </div>
@@ -101,7 +103,7 @@
                     </div>
                     <h6 class="user-texte-prof">Professeurs</h6>
                 </div>
-                
+            
                 <div class="utilisateur">
                     <div class="utilisateur-box-eleve">
                     <a href="./AccountAdmin.php" class="user-link"> </a>

@@ -9,6 +9,22 @@
     background: radial-gradient(circle, rgba(148,220,205,1) 0%, rgba(217,238,174,0.6601234243697479) 70%);
     height: 100vh;
     position: relative;
+    animation: change-color 10s ease-in-out infinite;
+}
+
+@keyframes change-color {
+  0% {
+    background-color:radial-gradient(circle, rgba(148,220,205,1) 0%, rgba(217,238,174,0.6601234243697479) 70%);
+  }
+
+
+  50% {
+    background-color: #2799b5;
+  }
+
+  100% {
+    background-color: radial-gradient(circle, rgba(148,220,205,1) 0%, rgba(217,238,174,0.6601234243697479) 70%);
+  }
 }
 
 .form-wrap{
