@@ -1,10 +1,10 @@
 <?php
 $bddservername = "localhost";
-$bddusername = "Antoine";
-$bddpassword = "1234";
+$bddusername = "root";
+$bddpassword = "";
 
 try {
-  $bdd = new PDO("mysql:host=$bddservername;dbname=BDCOMMANDES", $bddusername, $bddpassword);
+  $bdd = new PDO("mysql:host=$bddservername;dbname=projetweb", $bddusername, $bddpassword);
   // set the PDO error mode to exception
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
