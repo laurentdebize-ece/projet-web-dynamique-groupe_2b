@@ -94,18 +94,24 @@
                 <div class="mes-competences">
                     <h2 class='card-title'> <a class="gen-card-link" href="./gestionDesUtilisateurs.php">Gerer les utilisateurs</a> </h2>
                         <div class="competence-card">
-                
-
                 <div class="utilisateur">
-                    <div class="utilisateur-box-prof">
+                    <div class="utilisateur-box-prof" onclick="redirigerVersAutrePage1()">
                         <a href="./AccountAdmin.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-book"></i></div>
                     </div>
                     <h6 class="user-texte-prof">Professeurs</h6>
                 </div>
             
+                <script>
+  function redirigerVersAutrePage1() {
+    var urlDestination = './gestionDesProfs.php';
+    window.location.href = urlDestination;
+  }
+
+</script>
+
                 <div class="utilisateur">
-                    <div class="utilisateur-box-eleve">
+                    <div class="utilisateur-box-eleve" onclick="redirigerVersAutrePage2()">
                     <a href="./AccountAdmin.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-card"></i></div>
                     </div>
@@ -113,12 +119,17 @@
                     <h6 class="user-texte-eleve">Elèves</h6>
 
                 </div>
-
-
-
-                        </div>
+                </div>
                 </div>
 
+                <script>
+  function redirigerVersAutrePage2() {
+    var urlDestination = './gestionDesEleves.php';
+    window.location.href = urlDestination;
+  }
+
+</script>
+                
                 <div class="mes-matieres">
                     <h2 class="card-title"><a class="gen-card-link" href="./gestionDesMatieres.php"> Gerer les matieres</a></h2>
                     <br>

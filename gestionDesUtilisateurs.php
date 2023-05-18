@@ -25,30 +25,23 @@
                 
                         
                 <div class="utilisateur">
-                    <div class="utilisateur-box-prof" onclick="redimensionnerConteneur()">
-                        <a href="./AccountAdmin.php" class="user-link"> </a>
+                    <div class="utilisateur-box-prof" onclick="redirigerVersAutrePage1()">
+                        <a href="./gestionDesProfs.php" class="user-link"> </a>
                         <h6 class="user-texte-prof">Professeurs</h6>
-
                         <div><i class="fa-solid fa-address-book"></i></div>
                     </div>
                 </div>
 
                 <script>
-  function redimensionnerConteneur() {
-    var conteneurEleve = document.querySelector('.utilisateur-box-prof');
-    conteneurEleve.style.width = '450px';
-    disparaitreConteneur();
-  }
-
-  function disparaitreConteneur() {
-    var conteneurEleve = document.querySelector('.utilisateur-box-eleve');
-    conteneurEleve.classList.add('disparait1');
+  function redirigerVersAutrePage1() {
+    var urlDestination = './gestionDesProfs.php';
+    window.location.href = urlDestination;
   }
 
 </script>
 
                 <div class="utilisateur">
-                    <div class="utilisateur-box-eleve" onclick="redimensionnerConteneur2()">
+                    <div class="utilisateur-box-eleve" onclick="redirigerVersAutrePage2()">
                     <h6 class="user-texte-eleve">Elèves</h6>
                     <a href="./AccountAdmin.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-card"></i></div>        
@@ -56,21 +49,14 @@
                 </div>
                 </div>
                 </div>
-
-
-<script>
-  function redimensionnerConteneur2() {
-    var conteneurEleve = document.querySelector('.utilisateur-box-eleve');
-    conteneurEleve.style.width = '450px';
-    disparaitreConteneur2();
+        
+                <script>
+  function redirigerVersAutrePage2() {
+    var urlDestination = './gestionDesEleves.php';
+    window.location.href = urlDestination;
   }
 
-  function disparaitreConteneur2() {
-    var conteneurEleve = document.querySelector('.utilisateur-box-prof');
-    conteneurEleve.classList.add('disparait2');
-  }
 </script>
-
 
 </section>
 </body>
