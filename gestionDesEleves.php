@@ -35,20 +35,20 @@
     <label for="prenom">Prénom:</label>
     <input type="text" id="prenom" name="prenom" required>
 
-    <label for="id-prof">ID élève:</label>
-    <input type="text" id="id-prof" name="id-prof" required>
+    <label for="id-eleve">ID élève:</label>
+    <input type="text" id="id-eleve" name="id-eleve" required>
 
     <label for="id-utilisateur">ID Utilisateur:</label>
     <input type="text" id="id-utilisateur" name="id-utilisateur" required>
 
-    <label for="matiere">Ecole:</label>
-    <input type="text" id="matiere" name="matiere" required>
+    <label for="ecole">Ecole:</label>
+    <input type="text" id="ecole" name="ecole" required>
 
-    <label for="matiere">Promo:</label>
-    <input type="text" id="matiere" name="matiere" required>
+    <label for="promo">Promo:</label>
+    <input type="text" id="promo" name="promo" required>
 
-    <label for="matiere">Classe:</label>
-    <input type="text" id="matiere" name="matiere" required>
+    <label for="classe">Classe:</label>
+    <input type="text" id="classe" name="classe" required>
 
     <label for="mail">Mail:</label>
     <input type="email" id="mail" name="mail" required>

@@ -32,20 +32,20 @@
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
 
-    <label for="prenom">Description:</label>
-    <input type="text" id="prenom" name="prenom" required>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required>
 
-    <label for="id-prof">ID Compétence:</label>
-    <input type="text" id="id-prof" name="id-prof" required>
+    <label for="id-competence">ID Compétence:</label>
+    <input type="text" id="id-competence" name="id-competence" required>
 
-    <label for="id-utilisateur">ID Matière:</label>
-    <input type="text" id="id-utilisateur" name="id-utilisateur" required>
+    <label for="id-matiere">ID Matière:</label>
+    <input type="text" id="id-matiere" name="id-matiere" required>
 
-    <label for="matiere">Ecole:</label>
-    <input type="text" id="matiere" name="matiere" required>
+    <label for="ecole">Ecole:</label>
+    <input type="text" id="ecole" name="ecole" required>
 
-    <label for="mail">Promo:</label>
-    <input type="email" id="mail" name="mail" required>
+    <label for="promo">Promo:</label>
+    <input type="text" id="promo" name="promo" required>
 
 
     <button type="submit">Soumettre</button>
@@ -89,9 +89,9 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="afficher-liste">Supprimer une compétence transverses</button></a> </div>
             
-<div class="liste-professeurs" id="liste-professeurs">
+<div class="liste-competence" id="liste-competencesTransveres">
   <h2>Cliquez sur la compétence à supprimer</h2>
-  <select id="select-professeurs">
+  <select id="select-competence">
   </select>
 </div>
 </div>
@@ -102,13 +102,13 @@
 
 <script>
   const bouton = document.getElementById('afficher-liste');
-  const listeProfesseurs = document.getElementById('liste-professeurs');
+  const listeCompetencesTransverses = document.getElementById('liste-competencesTransveres');
 
   bouton.addEventListener('click', function() {
-    if (listeProfesseurs.style.display === 'none') {
-      listeProfesseurs.style.display = 'block';
+    if (listeCompetencesTransverses.style.display === 'none') {
+      listeCompetencesTransverses.style.display = 'block';
     } else {
-      listeProfesseurs.style.display = 'none';
+      listeCompetencesTransverses.style.display = 'none';
     }
   });
 </script>

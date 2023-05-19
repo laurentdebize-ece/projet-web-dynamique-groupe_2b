@@ -62,7 +62,7 @@
                     <a href="./listeDesUtilisateurs.php" class="menu-link">Liste des utilisateurs</a>
                 </li>
                 <li class="menu-item">
-                    <a href="gestionDesMatieres.php" class="menu-link">Liste des matières</a>
+                    <a href="./listeDesMatieres.php" class="menu-link">Liste des matières</a>
                 </li>
                 <li class="menu-item">
                     <a href="./ListeDesCompetences.php" class="menu-link">Liste des compétences</a>
@@ -87,7 +87,56 @@
 
         <div class="top-banner">
                 <h1 class="dashboard-title">Dashboard</h1>
-                <a href="" class="notif-logo"><i class="fa-solid fa-bell"></i></a>
+                <div class="notification">
+                <i class="fa-solid fa-bell"></i>
+
+  <div class="form-container">
+    <h2>Envoyer un message</h2>
+    <form id="message-form">
+      <input type="text" id="message-title" placeholder="Titre du message">
+      <input type="text" id="message-recipient" placeholder="Destinataire(s)">
+      <input type="text" id="message-body" placeholder="Corps du message"></input>
+      <button type="submit" id="send-button">Envoyer</button>
+    </form>
+  </div>
+</div>
+
+<script>
+
+const notification = document.querySelector('.notification');
+const formContainer = document.querySelector('.form-container');
+const messageForm = document.querySelector('#message-form');
+const sendButton = document.querySelector('#send-button');
+
+notification.addEventListener('click', function() {
+  formContainer.classList.toggle('active');
+});
+
+messageForm.addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+sendButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  const title = document.querySelector('#message-title').value;
+  const recipient = document.querySelector('#message-recipient').value;
+  const body = document.querySelector('#message-body').value;
+
+  if (title === '' || recipient === '' || body === '') {
+    const warningMessage = document.createElement('p');
+    warningMessage.textContent = 'Veuillez remplir tous les champs.';
+    warningMessage.classList.add('warning-message');
+    messageForm.appendChild(warningMessage);
+  } else {
+    console.log('Message envoyé !');
+    messageForm.reset();
+    formContainer.classList.remove('active');
+  }
+});
+
+</script>
+
+                
             </div>
             <div class="menu-part">
 
@@ -133,9 +182,9 @@
                 <div class="mes-matieres">
                     <h2 class="card-title"><a class="gen-card-link" href="./gestionDesMatieres.php"> Gerer les matieres</a></h2>
                     <br>
-                    <h2><a href="gestionDesMatieres.php" class="matiere-link">Ajouter une matière</a><h2>
+                    <h2><a href="./modificationMatieres.php" class="matiere-link">Ajouter une matière</a><h2>
                     <br>
-                    <h2><a href="gestionDesMatieres.php" class="matiere-link">Voir toutes les matières</a><h2>
+                    <h2><a href="./listeDesMatieres.php" class="matiere-link">Voir toutes les matières</a><h2>
             
                 </div>
 
@@ -154,7 +203,7 @@
 
                     <button class="ecole-btn" onclick="window.location.href = './modificationCompentencesTransverses.php';">Modifier une compétences transverses</button></a>
                     
-                    <button class="ecole-btn" onclick="window.location.href = './ListeDesCompetences.php';">Modifier une compétences transverses</button></a>
+                    <button class="ecole-btn" onclick="window.location.href = './ListeDesCompetences.php';">Voir toutes les compétences </button></a>
                     </div>
                 </div>
                 
