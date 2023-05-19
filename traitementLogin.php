@@ -20,20 +20,21 @@
     $iduser = $requeteID->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION['idUtilisateur'] = $iduser['idUtilisateur'];
+    $_SESSION['statut'] = $resultat['statut'];
   
 
     if($resultat != null){
         if($resultat['statut'] == "Eleve"){
             
-            header('Location: accueilEtudiant.php');
+            header('Location: ./Eleve/accueilEtudiant.php');
         }
         else if($resultat['statut'] == "Prof"){
             
-            $_SESSION['infoUtilisateur'][0] = $resultat['idUtilisateur'];
-            header('Location: accueilProf.php');
+            
+            header('Location: ./Prof/accueilProf.php');
         }
         else if($resultat['statut'] == "Admin"){
-            $_SESSION['infoUtilisateur'][0] = $resultat['idUtilisateur'];
+            
             header('Location: accueilAdmin.php');
         }
       

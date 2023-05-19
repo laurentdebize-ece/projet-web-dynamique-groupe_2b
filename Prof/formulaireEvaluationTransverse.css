@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia sans';
+}
+
+.home-link{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: black;
+}
+
+.page-title{
+    text-align: center;
+    margin-top: 70px;
+    font-size: 4rem;
+    position: relative;
+}
+
+.red-circle-top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background-color: #db7878;
+    border-radius: 0 0 0 100%;
+}
+
+.evaluation-form-wrapper{
+    width: 800px;
+    margin: 50px auto;
+    height: 800px;
+    background-color: #db7878;
+    border-radius: 10px;
+    box-shadow: 0  0 10px rgba(0,0,0,0.25);
+    transition: all 0.5s ease-in-out ;
+    padding: 20px;
+}
+
+.evaluation-form-wrapper:hover{
+    box-shadow: 0  0 10px rgba(0,0,0,0.5);
+}
+
+.eleve-name{
+    font-size: 3rem;
+}
+.competence-title{
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.competence-description{
+    font-size: 1.8rem;
+    font-weight: 200;
+}
+
+.eval-eleve{
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.eleve-note{
+    font-weight: 800;
+}
+
+
+
+.form-title{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.choix-eval{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    height: 30px;
+   
+    padding: 50px 0;
+    box-shadow: 0px 6px 10px  rgba(0, 0, 0, 0.25);
+}
+
+.radio-label{
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.radio-input{
+    display: none;
+ 
+ }
+
+ .evaluation-form{
+    display: flex;
+    flex-direction: column;
+ }
+
+
+
+.radio-input:checked + #acquislabel{
+    background: #C6D6C6;
+}
+
+.radio-input:checked + #encourslabel{
+    background: #ebb980;
+}
+
+.radio-input:checked + #nonlabel{
+    background: #dc5757;
+}
+
+.page-title::after{
+    content: '';
+    width: 100px;
+    height: 5px;
+    background-color: #000;
+    display: block;
+    margin: 10px auto;
+    animation: underline 3s ease-in-out infinite;
+}
+
+@keyframes underline {
+    0%{
+        width: 20px;
+    }
+    50%{
+        width: 500px;
+    }
+    100%{
+        width: 20px;
+    }
+}
+
+.prof-msg-input{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-family: 'Sofia sans';
+    resize: none;
+    margin: 20px 0;
+    box-shadow: 0px 6px 10px  rgba(0, 0, 0, 0.25);
+
+}
+
+.btn-evaluation{
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: 320px;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+.btn-evaluation::after{
+    content: '';
+    width: 0;
+    height: 5px;
+    background-color: #000;
+    display: block;
+    margin: 10px auto;
+    transition: width 0.3s ease-in-out;
+    
+}
+
+.btn-evaluation:hover::after{
+    width: 100%;
+}
