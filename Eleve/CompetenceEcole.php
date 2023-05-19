@@ -54,7 +54,7 @@
         <i class="fas fa-home"></i>
     </a>
     <div class="green-circle-top-right"></div>
-    <h1 class="page-title">Les compeétences <?php echo $nomEcole['ecole'] ?></h1>
+    <h1 class="page-title">Les compétences <?php echo $nomEcole['ecole'] ?></h1>
     <div class="competence-card-container">
         <?php
             foreach($competences as $competence){

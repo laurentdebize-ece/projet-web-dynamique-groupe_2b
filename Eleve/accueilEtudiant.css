@@ -426,3 +426,13 @@ i{
     color: black;
     width: 100%;
 }
+
+.prof-message{
+    font-size: 1rem;
+    justify-self: flex-end;
+}
+
+.competence-status{
+    font-size: 1.2rem;
+    font-weight: 200;
+}

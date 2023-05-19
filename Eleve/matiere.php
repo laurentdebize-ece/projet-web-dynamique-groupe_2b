@@ -105,7 +105,7 @@
                 case '2':
                     echo '<div class="competence-status-container">';
                     echo '<p class="competence-status">Non validé</p>';
-                    echo '<p class="competence-status"> Message du prof : '.$profMessage.'</p>';
+                    echo '<p class="competence-status"> Message du professeur : '.$profMessage.'</p>';
                     echo '</div>';
                     break;
                 case '3':

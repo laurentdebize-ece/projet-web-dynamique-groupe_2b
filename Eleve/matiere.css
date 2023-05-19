@@ -122,3 +122,12 @@
 .orange{
     background: rgb(255, 191, 123);
 }
+.prof-message{
+    font-size: 1rem;
+    justify-self: flex-end;
+}
+
+.competence-status{
+    font-size: 1.2rem;
+    font-weight: 200;
+}
