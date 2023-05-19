@@ -1,7 +1,7 @@
 <?php
 $bddservername = "localhost";
-$bddusername = "root";
-$bddpassword = "";
+$bddusername = "Antoine";
+$bddpassword = "1234";
 
 try {
   $bdd = new PDO("mysql:host=$bddservername;dbname=projetweb", $bddusername, $bddpassword);
