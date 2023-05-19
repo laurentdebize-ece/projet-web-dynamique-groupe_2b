@@ -5,7 +5,7 @@
 
     $idEcole = $_GET['id'];
 
-    $requeteCompetence = $bdd->prepare("SELECT Competence.idCompetence, Competence.nomCompetence, description FROM Competence INNER JOIN Ecole ON Competence.ecole = Ecole.ecole WHERE  ecole.idEcole = :idEcole");
+    $requeteCompetence = $bdd->prepare("SELECT Competence.idCompetence, Competence.nomCompetence, Competence.description FROM Competence INNER JOIN Ecole ON Competence.ecole = Ecole.ecole WHERE  ecole.idEcole = :idEcole");
     $requeteCompetence->bindParam(':idEcole', $idEcole);
     $requeteCompetence->execute();
 
@@ -16,6 +16,12 @@
     $requeteNoteCompetence->execute();
 
     $noteCompetences = $requeteNoteCompetence->fetchAll(PDO::FETCH_ASSOC);
+
+    $requeteNomEcole = $bdd->prepare("SELECT * FROM Ecole WHERE idEcole = :idEcole");
+    $requeteNomEcole->bindParam(':idEcole', $idEcole);
+    $requeteNomEcole->execute();
+
+    $nomEcole = $requeteNomEcole->fetch(PDO::FETCH_ASSOC);
 
     if(isset($_POST['tri'])){
         if($_POST['tri'] == 'asc'){
@@ -48,7 +54,7 @@
         <i class="fas fa-home"></i>
     </a>
     <div class="green-circle-top-right"></div>
-    <h1 class="page-title">Toutes les compétences</h1>
+    <h1 class="page-title">Les compeétences <?php echo $nomEcole['ecole'] ?></h1>
     <div class="competence-card-container">
         <?php
             foreach($competences as $competence){

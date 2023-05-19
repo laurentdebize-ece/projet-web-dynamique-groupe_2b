@@ -11,6 +11,14 @@
     $competencesValidation = $requetesCompetencesValidation->fetchAll(PDO::FETCH_ASSOC);
 
 
+    $requetesCompetencesValidationTransverse = $bdd->prepare("SELECT CompetenceTransverse.nom, Eleve.nomEleve, TransverseNote.note, CompetenceTransverse.description, TransverseNote.idEleve, Eleve.prenomEleve, TransverseNote.idCompetenceTransverse  FROM CompetenceTransverse INNER JOIN TransverseNote ON CompetenceTransverse.idCompetenceTransverse = TransverseNote.idCompetenceTransverse  INNER JOIN Eleve ON Eleve.idEleve = TransverseNote.idEleve INNER JOIN TransverseProf ON TransverseProf.idCompetenceTransverse = TransverseNote.idCompetenceTransverse WHERE TransverseProf.idProf = :idProf AND TransverseNote.Validation = 1 ");
+    $requetesCompetencesValidationTransverse->bindParam(':idProf', $_SESSION['idProfesseur']);
+    $requetesCompetencesValidationTransverse->execute();
+
+    $competencesValidationTransverse = $requetesCompetencesValidationTransverse->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 
     
@@ -52,6 +60,24 @@
                 echo "<p class='competence-description'>".$competence['description']."</p>";
                 
                 echo '<a class="eval-link" href="./formulaireEvaluation.php?idComp='.$competence['idCompetence'].'&idEleve='.$competence['idEleve'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
+                echo "</div>";
+            }
+
+            foreach($competencesValidationTransverse as $competenceTransverse){
+               
+                if($competenceTransverse['note'] == 0){
+                    echo '<div class="competence-card green">';
+                }else if($competenceTransverse['note'] == 1){
+                    echo '<div class="competence-card orange">';
+                }else if($competenceTransverse['note'] == 2){
+                    echo '<div class="competence-card red">';
+                }
+                
+                echo "<h2 class='competence-eleve'>".$competenceTransverse['prenomEleve']." ".$competenceTransverse['nomEleve']."</h2>";
+                echo "<h3 class='competence-title'>".$competenceTransverse['nom']."</h3>";
+                echo "<p class='competence-description'>".$competenceTransverse['description']."</p>";
+                
+                echo '<a class="eval-link" href="./formulaireEvaluationTransverse.php?idComp='.$competenceTransverse['idCompetenceTransverse'].'&idEleve='.$competenceTransverse['idEleve'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
                 echo "</div>";
             }
         ?>

@@ -57,6 +57,8 @@
                 foreach($noteCompetencesTransverse as $noteTransverse){
                     if($noteTransverse['idCompetenceTransverse'] == $competenceTransverse['idCompetenceTransverse']){
                         $noteCompTransverse = $noteTransverse['note'];
+                        $statutEvalTransverse = $noteTransverse['Validation'];
+                        $profMessageTransverse = $noteTransverse['Message'];
                     }
                 }
                 if($noteCompTransverse == 0){
@@ -69,6 +71,36 @@
                
                 echo '<h2 class="competence-title"> '.$competenceTransverse['nom'].' </h2>';
                 echo '<p class="competence-description"> '.$competenceTransverse['description'].' </p>';
+                switch($statutEvalTransverse){
+                    case '0':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Evaluez vous !</p>';
+                        echo '</div>';
+                        break;
+                    case '1':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">En attente de validation.</p>';
+                        echo '</div>';
+                        break;
+                    case '2':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Avis du professeur : Non validé</p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessageTransverse.'</p>';
+                        echo '</div>';
+                        break;
+                    case '3':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status">Avis du professeur : En cours d acquisition </p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessageTransverse.'</p>';
+                        echo '</div>';
+                        break;
+                    case '4':
+                        echo '<div class="competence-status-container">';
+                        echo '<p class="competence-status"> Avis du professeur : Validé</p>';
+                        echo '<p class="competence-status">Message du professeur: '.$profMessageTransverse.'</p>';
+                        echo '</div>';
+                        break;
+                }
                 echo '<a href="./evaluationTransverse.php?id='.$competenceTransverse['idCompetenceTransverse'].'" class="competence-link"> <i class="fa-solid fa-arrow-right"></i> </a>';
                 echo '</div>';
             }

@@ -3,6 +3,7 @@
     require_once '../bdd.php';
 
     $idCompetence = $_GET['id'];
+    $statut = 1;
 
     if(isset($_POST['choix'])){
         $eval = $_POST['choix'];
@@ -12,8 +13,9 @@
 
     //update de la competence de l'utilisateur
 
-    $requetUpdate = $bdd->prepare("UPDATE TransverseNote SET note = :evaluation WHERE idEleve = :idEleve AND idCompetenceTransverse = :idCompetence");
+    $requetUpdate = $bdd->prepare("UPDATE TransverseNote SET note = :evaluation, Validation = :statut WHERE idEleve = :idEleve AND idCompetenceTransverse = :idCompetence");
     $requetUpdate->bindParam(':evaluation', $eval);
+    $requetUpdate->bindParam(':statut', $statut);
     $requetUpdate->bindParam(':idEleve', $_SESSION['idEleve']);
     $requetUpdate->bindParam(':idCompetence', $idCompetence);
     $requetUpdate->execute();

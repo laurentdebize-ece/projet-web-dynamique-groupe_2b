@@ -66,9 +66,10 @@ if($isAllowed == false){
                 <h3 class="form-snd-title">Mon evaluation : </h3>
                 <div class="choix-eval">
 
+                   
                     <label>
-                            <input type="radio" name="choix" value="0" class="radio-input" id="Acquis" require>
-                            <label for="Acquis" class="radio-label" id="acquislabel">Acquis</label>
+                            <input type="radio" name="choix" value="2" class="radio-input" id="nonacquis" require>
+                            <label for="nonacquis" class="radio-label" id="nonlabel">Non acquis</label>
                     </label>
                         <br>
                     <label>
@@ -77,9 +78,10 @@ if($isAllowed == false){
                     </label>
                         <br>
                     <label>
-                            <input type="radio" name="choix" value="2" class="radio-input" id="nonacquis" require>
-                            <label for="nonacquis" class="radio-label" id="nonlabel">Non acquis</label>
+                            <input type="radio" name="choix" value="0" class="radio-input" id="Acquis" require>
+                            <label for="Acquis" class="radio-label" id="acquislabel">Acquis</label>
                     </label>
+                    
                 </div>
             </div>
             <button class="btn-evaluation" type="submit">M'évaluer</button>
