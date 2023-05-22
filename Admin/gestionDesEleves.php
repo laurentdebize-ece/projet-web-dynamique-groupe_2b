@@ -1,3 +1,14 @@
+<?php
+  session_start();
+  require_once"../bdd.php";
+
+  $requeteClasse = $bdd->prepare("SELECT idClasse, ecole, nomClasse, promo FROM Classe");
+  $requeteClasse->execute();
+  $classes = $requeteClasse->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +38,7 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="toggle-formulaire">Ajouter un élève</button></a> </div>
                     <div class="conteneur-formulaire">
-  <form>
+  <form action="./traitementAjoutEleve.php" method="post">
     <h4>
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
@@ -35,26 +46,23 @@
     <label for="prenom">Prénom:</label>
     <input type="text" id="prenom" name="prenom" required>
 
-    <label for="id-eleve">ID élève:</label>
-    <input type="text" id="id-eleve" name="id-eleve" required>
-
-    <label for="id-utilisateur">ID Utilisateur:</label>
-    <input type="text" id="id-utilisateur" name="id-utilisateur" required>
-
-    <label for="ecole">Ecole:</label>
-    <input type="text" id="ecole" name="ecole" required>
-
-    <label for="promo">Promo:</label>
-    <input type="text" id="promo" name="promo" required>
+ 
 
     <label for="classe">Classe:</label>
-    <input type="text" id="classe" name="classe" required>
+    <select id="classe" name="classe" required>
+      <option value="">--Choisir une classe--</option>
+      <?php foreach ($classes as $classe) { ?>
+        <option value="<?= $classe['idClasse'] ?>"><?= $classe['nomClasse'], $classe['ecole'], $classe['promo'] ?></option>
+      <?php } ?>
+    </select>
+    <br>
+    
 
     <label for="mail">Mail:</label>
     <input type="email" id="mail" name="mail" required>
 
     <label for="mot-de-passe">Mot de passe:</label>
-    <input type="password" id="mot-de-passe" name="mot-de-passe" required>
+    <input type="password" id="mot-de-passe" name="password" required>
 
     <button type="submit">Soumettre</button>
   </form>
@@ -109,10 +117,10 @@
 </div>
 
 <script>
-  const bouton = document.getElementById('afficher-liste');
+  const bouton2 = document.getElementById('afficher-liste');
   const listeEleves = document.getElementById('liste-eleves');
 
-  bouton.addEventListener('click', function() {
+  bouton2.addEventListener('click', function() {
     if (listeEleves.style.display === 'none') {
       listeEleves.style.display = 'block';
     } else {
