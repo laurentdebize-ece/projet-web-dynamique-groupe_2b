@@ -35,7 +35,7 @@
         }
         else if($resultat['statut'] == "Admin"){
             
-            header('Location: accueilAdmin.php');
+            header('Location: ./Admin/accueilAdmin.php');
         }
       
         
