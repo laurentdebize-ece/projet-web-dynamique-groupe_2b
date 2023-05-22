@@ -1,26 +1,8 @@
 <?php
     session_start();
-    require_once 'bdd.php';
-
-    
-    $idUtilisateur = $_SESSION['idUtilisateur'];
-
-    $requeteInfoAdmin = $bdd->prepare("SELECT * FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteInfoAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-    $requeteInfoAdmin->execute();
-
-    $infoAdmin = $requeteInfoAdmin->fetch(PDO::FETCH_ASSOC);
+    require_once '../bdd.php';
 
 
-    $requeteIdAdmin = $bdd->prepare("SELECT idAdmin FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteIdAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-
-    $idAdmin = $requeteIdAdmin->fetch(PDO::FETCH_ASSOC);
-
-
-    $_SESSION['nom'] = $infoAdmin['nomAdmin'];
-    $_SESSION['prenom'] = $infoAdmin['prenomAdmin'];
-    $_SESSION['mail'] = $infoAdmin['mail'];
 
 ?>
 

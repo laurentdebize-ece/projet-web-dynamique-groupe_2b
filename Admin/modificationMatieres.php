@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    require_once"../bdd.php";
+
+    $requeteProf = $bdd->prepare("SELECT idProf, nomProf, prenomProf FROM Prof");
+    $requeteProf->execute();
+    $professeurs = $requeteProf->fetchAll(PDO::FETCH_ASSOC);
+
+    $requetePromo = $bdd->prepare("SELECT idPromo, promo, ecole FROM Promo");
+    $requetePromo->execute();
+    $promos = $requetePromo->fetchAll(PDO::FETCH_ASSOC);
+
+    $reqListeMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere, nomProf, ecole, promo FROM Matiere");
+    $reqListeMatiere->execute();
+    $listeMatiere = $reqListeMatiere->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +44,7 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="toggle-formulaire">Ajouter une matière</button></a> </div>
                     <div class="conteneur-formulaire">
-  <form>
+  <form action="./traitementCreationMatiere.php" method="post">
     <h4>
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
@@ -35,20 +52,25 @@
     <label for="nbHeures">nombre d'heures:</label>
     <input type="number" id="nbHeures" name="nbHeures" required>
 
-    <label for="id-matiere">ID Matière:</label>
-    <input type="text" id="id-matiere" name="id-matiere" required>
 
     <label for="nom-prof">Enseigné par:</label>
-    <input type="text" id="nom-prof" name="nom-prof" required>
-
-    <label for="id-prof">ID Prof:</label>
-    <input type="text" id="id-prof" name="id-prof" required>
-
-    <label for="matiere">Ecole:</label>
-    <input type="text" id="ecole" name="ecole" required>
+    <select name="nom-prof" id="nom-prof" required>
+      
+      <?php foreach ($professeurs as $professeur) { ?>
+        <option value="<?= $professeur['idProf'] ?>"><?= $professeur['nomProf'] ?> <?= $professeur['prenomProf'] ?></option>
+      <?php } ?>
+    </select>
+    <br>
+  
 
     <label for="matiere">Promo:</label>
-    <input type="text" id="promo" name="promo" required>
+    <select name="nom-promo" id="matiere" required>
+      
+      <?php foreach ($promos as $promo) { ?>
+        <option value="<?= $promo['idPromo'] ?>"><?= $promo['promo'] ?> <?= $promo['ecole'] ?></option>
+      <?php } ?>
+    </select>
+
 
 
 
@@ -94,7 +116,17 @@
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="afficher-liste">Supprimer une matière</button></a> </div>
             
                     <div class="liste-competences" id="liste-matiere">
-  </select>
+                      <div class="supprimerMatiere" id="supprimerMatiere">
+                        <form action="./traitementSuppressionMatiere.php" method="post">
+                          <select name="matiere" id="matiere" required>
+                            <?php foreach ($listeMatiere as $matiere) { ?>
+                              <option value="<?= $matiere['idMatiere'] ?>"><?= $matiere['nomMatiere'] ?> <?= $matiere['nomProf'] ?> <?= $matiere['ecole'] ?> <?= $matiere['promo'] ?></option>
+                            <?php } ?>
+                          </select>
+                          <button type="submit">Supprimer</button>
+                        </form>
+                      </div>
+                  
 </div>
 </div>
 </div>
@@ -103,10 +135,10 @@
 </div>
 
 <script>
-  const bouton = document.getElementById('afficher-liste');
-  const listeMatiere = document.getElementById('liste-Matiere');
+  const bouton2 = document.getElementById('afficher-liste');
+  const listeMatiere = document.getElementById('supprimerMatiere');
 
-  bouton.addEventListener('click', function() {
+  bouton2.addEventListener('click', function() {
     if (listeMatiere.style.display === 'none') {
         listeMatiere.style.display = 'block';
     } else {
