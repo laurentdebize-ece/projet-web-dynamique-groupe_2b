@@ -6,6 +6,10 @@
   $requeteClasse->execute();
   $classes = $requeteClasse->fetchAll(PDO::FETCH_ASSOC);
 
+  $requeteEleve = $bdd->prepare("SELECT idEleve, nomEleve, prenomEleve, mail, mdp, idClasse FROM Eleve");
+  $requeteEleve->execute();
+  $eleves = $requeteEleve->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -106,9 +110,16 @@
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="afficher-liste">Supprimer un élève</button></a> </div>
             
 <div class="liste-eleves" id="liste-eleves">
-  <h2>Cliquez sur l'élève à supprimer</h2>
-  <select id="select-eleve">
-  </select>
+  <h2>Choisissez l'élève à supprimer</h2>
+  <form action="./traitementSuppressionEleve.php" method="post">
+    <select id="select-eleve" name="eleve">
+      <option value="">--Choisir un élève--</option>
+      <?php foreach ($eleves as $eleve) { ?>
+        <option value="<?= $eleve['idEleve'] ?>"><?= $eleve['nomEleve'], $eleve['prenomEleve']?></option>
+      <?php } ?>
+    </select>
+    <button type="submit">Supprimer</button>
+  </form>
 </div>
 </div>
 </div>
