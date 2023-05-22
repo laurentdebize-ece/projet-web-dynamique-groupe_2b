@@ -77,7 +77,7 @@
                 <a href="" class="icon-link"><i class="fa-solid fa-gear"></i>    </a>
                 <br>
                 <br>
-                <a href="Login.php" class="icon-link"><i class="fa-solid fa-power-off"></i><a href="" class="logout-link"></a></a>         
+                <a href="../Login.php" class="icon-link"><i class="fa-solid fa-power-off"></i><a href="" class="logout-link"></a></a>         
             </div>
         </section>
             
