@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require_once"../bdd.php";
+
+    $reqListeMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere, nomProf, ecole, promo FROM Matiere");
+    $reqListeMatiere->execute();
+    $listeMatiere = $reqListeMatiere->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +38,7 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="toggle-formulaire">Ajouter une compétence</button></a> </div>
                     <div class="conteneur-formulaire">
-  <form>
+  <form action="./traitementAjoutCompetence.php" method="post">
     <h4>
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
@@ -35,17 +46,14 @@
     <label for="description">Description:</label>
     <input type="text" id="description" name="description" required>
 
-    <label for="id-competence">ID Compétence:</label>
-    <input type="text" id="id-competence" name="id-competence" required>
 
-    <label for="id-matiere">ID Matière:</label>
-    <input type="text" id="id-matiere" name="id-matiere" required>
-
-    <label for="ecole">Ecole:</label>
-    <input type="text" id="ecole" name="ecole" required>
-
-    <label for="promo">Promo:</label>
-    <input type="text" id="promo" name="promo" required>
+    <label for="matiere">Matiere:</label>
+    <select name="matiere" id="matiere" required>
+        <option value="">--Choisir une matiere--</option>
+        <?php foreach ($listeMatiere as $matiere) { ?>
+            <option value="<?php echo $matiere['idMatiere']; ?>"><?php echo $matiere['nomMatiere'] . "  " . $matiere['ecole'] . "  " . $matiere['promo']; ?></option>
+        <?php } ?>
+    </select>
 
 
     <button type="submit">Soumettre</button>

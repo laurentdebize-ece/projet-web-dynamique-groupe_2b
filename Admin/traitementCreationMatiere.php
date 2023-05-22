@@ -54,6 +54,11 @@
         }
         $ajoutClasse->closeCursor();
 
+        $ajoutPromo = $bdd->prepare("INSERT INTO PromoMatiere (idMatiere, idPromo) VALUES (:idMatiere, :idPromo)");
+        $ajoutPromo->bindValue(':idMatiere', $idMatiere, PDO::PARAM_INT);
+        $ajoutPromo->bindValue(':idPromo', $idPromo, PDO::PARAM_INT);
+        $ajoutPromo->execute();
+
     
 
         header('Location: ./gestionDesMatieres.php');
