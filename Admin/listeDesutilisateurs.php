@@ -1,27 +1,20 @@
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
-    
-    $idUtilisateur = $_SESSION['idUtilisateur'];
+    $requeteListeProf = $bdd->prepare('SELECT * FROM Prof');
+    $requeteListeProf->execute();
+    $listeProf = $requeteListeProf->fetchAll(PDO::FETCH_ASSOC);
 
-    $requeteInfoAdmin = $bdd->prepare("SELECT * FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteInfoAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-    $requeteInfoAdmin->execute();
+    $requeteListeEleve = $bdd->prepare('SELECT * FROM Eleve');
+    $requeteListeEleve->execute();
+    $listeEleve = $requeteListeEleve->fetchAll(PDO::FETCH_ASSOC);
 
-    $infoAdmin = $requeteInfoAdmin->fetch(PDO::FETCH_ASSOC);
+    $requeteListeAdmin = $bdd->prepare('SELECT * FROM Admin');
+    $requeteListeAdmin->execute();
+    $listeAdmin = $requeteListeAdmin->fetchAll(PDO::FETCH_ASSOC);
 
-
-    $requeteIdAdmin = $bdd->prepare("SELECT idAdmin FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteIdAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-
-    $idAdmin = $requeteIdAdmin->fetch(PDO::FETCH_ASSOC);
-
-
-    $_SESSION['nom'] = $infoAdmin['nomAdmin'];
-    $_SESSION['prenom'] = $infoAdmin['prenomAdmin'];
-    $_SESSION['mail'] = $infoAdmin['mail'];
-
+  
 ?>
 
 
@@ -48,21 +41,41 @@
 <div class="container">
   <div class="col">
     <h3 class="title">Liste des admins</h3>
-    <h1 class="username">    
-        <?php
-        ?>
+    <?php
+        foreach($listeAdmin as $admin){
+          echo "<div class='user-item'>";
+          echo "<p>"."<div class='user-circle'></div>".$admin['nomAdmin']." ".$admin['prenomAdmin']. "  ".$admin['mail']."</p>";
+          echo "</div>";
+        }
+     
+    ?>
+        
 </h1>
 
   </div>
   <div class="col">
     <h3 class="title">Liste des profs</h3>
+      <?php
+        foreach($listeProf as $prof){
+          echo "<div class='user-item'>";
+          echo "<p>"."<div class='user-circle'></div>".$prof['nomProf']." ".$prof['prenomProf']. "  ".$prof['mail']. "  ".$prof['nomMatiere']."</p>";
+          echo "</div>";
+        }
+      ?>
   </div>
   <div class="col">
     <h3 class="title">Liste des élèves</h3>
+        <?php
+        foreach($listeEleve as $eleve){
+          echo "<div class='user-item'>";
+          echo "<p>"."<div class='user-circle'></div>".$eleve['nomEleve']." ".$eleve['prenomEleve']. "  ".$eleve['mail']."   ".$eleve['ecole']."   ".$eleve['promo']."</p>";
+          echo "</div>";
+        }
+      
+
+        ?>
   </div>
-  <div class="col">
-    <h3 class="title">Liste complète</h3>
-  </div>
+  
 </div>
 
 </body>

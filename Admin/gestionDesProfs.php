@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+require_once '../bdd.php';
+
+$requeteNomProfesseur = $bdd->prepare("SELECT idProf, nomProf, prenomProf  FROM Prof");
+$requeteNomProfesseur->execute();
+$nomProfesseur = $requeteNomProfesseur->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +39,7 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="toggle-formulaire">Ajouter un professeur</button></a> </div>
                     <div class="conteneur-formulaire">
-  <form>
+  <form action="./traitementAjoutProf.php" method="post">
     <h4>
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
@@ -35,20 +47,15 @@
     <label for="prenom">Prénom:</label>
     <input type="text" id="prenom" name="prenom" required>
 
-    <label for="id-prof">ID Prof:</label>
-    <input type="text" id="id-prof" name="id-prof" required>
-
-    <label for="id-utilisateur">ID Utilisateur:</label>
-    <input type="text" id="id-utilisateur" name="id-utilisateur" required>
-
-    <label for="matiere">Matière enseignée:</label>
+    <label for="prenom">Matiere:</label>
     <input type="text" id="matiere" name="matiere" required>
+
 
     <label for="mail">Mail:</label>
     <input type="email" id="mail" name="mail" required>
 
     <label for="mot-de-passe">Mot de passe:</label>
-    <input type="password" id="mot-de-passe" name="mot-de-passe" required>
+    <input type="password" id="mot-de-passe" name="password" required>
 
     <button type="submit">Soumettre</button>
   </form>
@@ -92,9 +99,17 @@
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="afficher-liste">Supprimer un professeur</button></a> </div>
             
 <div class="liste-professeurs" id="liste-professeurs">
-  <h2>Cliquez sur le professeur à supprimer</h2>
-  <select id="select-professeurs">
-  </select>
+  <h2>Selectionner le proffeseur à supprimer : </h2>
+  <form action="./traitementSuppressionProf.php" method="post">
+
+    <select name="prof" id="select-professeurs">
+      <?php foreach ($nomProfesseur as $professeur) { ?>
+        <option  value="<?= $professeur['idProf'] ?>"><?= $professeur['nomProf'] ?> <?= $professeur['prenomProf'] ?></option>
+      <?php } ?>
+    </select>
+
+    <button type="submit"><i class="fa-regular fa-trash"></i></button>
+  </form>
 </div>
 </div>
 </div>
@@ -103,11 +118,15 @@
 </div>
 
 <script>
-  const bouton = document.getElementById('afficher-liste');
+  const bouton2 = document.getElementById('afficher-liste');
   const listeProfesseurs = document.getElementById('liste-professeurs');
 
-  bouton.addEventListener('click', function() {
-    if (listeProfesseurs.style.display === 'none') {
+  let listeProfesseursVisible = false;
+
+  bouton2.addEventListener('click', function() {
+    console.log('click');
+    listeProfesseursVisible = !listeProfesseursVisible;
+    if (listeProfesseursVisible) {
       listeProfesseurs.style.display = 'block';
     } else {
       listeProfesseurs.style.display = 'none';
