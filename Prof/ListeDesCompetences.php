@@ -31,7 +31,7 @@
     <title>Gestion des utilisateurs</title>
     <a class="home-link" href="accueilProf.php">    <i class="fa-solid fa-house"></i></a>
     <div class= account-info>
-    <h1 class="page-title">Liste des competences</h1>
+    <h1 class="page-title">Liste de mes competences</h1>
 </div>
 </head>
 <body>
@@ -39,7 +39,7 @@
 <div class="container">
 
   <div class="col">
-    <h3 class="title">Liste des competences "classiques"</h3>
+    <h3 class="title">Mes competences "classiques"</h3>
     <?php
     foreach($listeCompetence as $competence)
     {

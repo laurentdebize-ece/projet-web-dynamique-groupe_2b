@@ -152,7 +152,7 @@ sendButton.addEventListener('click', function(event) {
                         <a href="accountProf.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-book"></i></div>
                     </div>
-                    <h6 class="user-texte-prof">Gestion</h6>
+                    <h6 class="comp-title">Gestion</h6>
                 </div>
             
                 <script>
@@ -164,7 +164,7 @@ sendButton.addEventListener('click', function(event) {
                     <a href="accountProf.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-card"></i></div>
                     </div>
-                    <h6 class="user-texte-eleve">Toutes les compétences</h6>
+                    <h6 class="comp-title">Consulter</h6>
 
 
                 </div>
