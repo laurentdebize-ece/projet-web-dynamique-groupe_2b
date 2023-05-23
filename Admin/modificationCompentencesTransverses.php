@@ -1,3 +1,19 @@
+<?php
+  session_start();
+  require_once '../bdd.php';
+
+  $listeProf = $bdd->prepare('SELECT idProf, nomProf, prenomProf FROM Prof');
+  $listeProf->execute();
+  $listeProf = $listeProf->fetchAll();
+
+  $listeCompetenceTransverse = $bdd->prepare('SELECT idCompetenceTransverse, nom, description FROM CompetenceTransverse');
+  $listeCompetenceTransverse->execute();
+  $listeCompetenceTransverse = $listeCompetenceTransverse->fetchAll();
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +43,7 @@
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="toggle-formulaire">Ajouter une compétence transverses</button></a> </div>
                     <div class="conteneur-formulaire">
-  <form>
+  <form action="traitementAjoutCompetenceTransverse.php" method="post">
     <h4>
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
@@ -35,17 +51,32 @@
     <label for="description">Description:</label>
     <input type="text" id="description" name="description" required>
 
-    <label for="id-competence">ID Compétence:</label>
-    <input type="text" id="id-competence" name="id-competence" required>
+  
 
-    <label for="id-matiere">ID Matière:</label>
-    <input type="text" id="id-matiere" name="id-matiere" required>
+    <div class="ecole-choix">
+         <input type="checkbox" name="ECE" id="ECE" value="1">
+          <label for="ECE">ECE</label>
 
-    <label for="ecole">Ecole:</label>
-    <input type="text" id="ecole" name="ecole" required>
+          <input type="checkbox" name="HEIP" id="HEIP" value="2">
+          <label for="HEIP">HEIP</label>
 
-    <label for="promo">Promo:</label>
-    <input type="text" id="promo" name="promo" required>
+          <input type="checkbox" name="INSEEC" id="INSEEC" value="3">
+          <label for="ESILV">INSEEC</label>
+
+    </div>
+
+    
+    <div class="prof-choix">
+    <label for="prof">Professeur assigné:</label>
+    <select name="prof" id="prof">
+      <?php foreach($listeProf as $prof): ?>
+        <option value="<?= $prof['idProf'] ?>"><?= $prof['nomProf'] ?> <?= $prof['prenomProf'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    </div>
+
+
+    
 
 
     <button type="submit">Soumettre</button>
@@ -91,8 +122,14 @@
             
 <div class="liste-competence" id="liste-competencesTransveres">
   <h2>Cliquez sur la compétence à supprimer</h2>
-  <select id="select-competence">
-  </select>
+  <form action="./traitementSuppressionTransverse.php" method="post">
+      <select  id="competenceTransverse" name="idComp">
+        <?php foreach($listeCompetenceTransverse as $competenceTransverse): ?>
+          <option value="<?= $competenceTransverse['idCompetenceTransverse'] ?>"><?= $competenceTransverse['nom']?>  |   <?= $competenceTransverse['description']?> </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit">Supprimer</button>
+  </form>
 </div>
 </div>
 </div>
@@ -101,10 +138,10 @@
 </div>
 
 <script>
-  const bouton = document.getElementById('afficher-liste');
+  const bouton2 = document.getElementById('afficher-liste');
   const listeCompetencesTransverses = document.getElementById('liste-competencesTransveres');
 
-  bouton.addEventListener('click', function() {
+  bouton2.addEventListener('click', function() {
     if (listeCompetencesTransverses.style.display === 'none') {
       listeCompetencesTransverses.style.display = 'block';
     } else {
