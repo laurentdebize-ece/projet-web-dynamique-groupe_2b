@@ -50,7 +50,7 @@
                 'idEcole' => $ecole
             ));
             $listeEleve = $listeEleve->fetchAll();
-            print_r($listeEleve);
+            
             foreach($listeEleve as $eleve){
                 $ajoutCompEleve = $bdd->prepare('INSERT INTO TransverseNote (idCompetenceTransverse, idEleve) VALUES (:idCompetence, :idEleve)');
                 $ajoutCompEleve->execute(array(
@@ -59,8 +59,11 @@
                 ));
             }
         }
-
         
+        header('Location: ./modificationCompetenceTransverse.php');
+        
+    }else{
+        header('Location: ./modificationCompetenceTransverse.php');
     }
 
 
