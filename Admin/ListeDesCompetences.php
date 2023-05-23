@@ -1,26 +1,17 @@
 <?php
     session_start();
-    require_once 'bdd.php';
+    require_once '../bdd.php';
 
-    
-    $idUtilisateur = $_SESSION['idUtilisateur'];
+  $listeCompetence = $bdd->prepare('SELECT * FROM Competence');
+  $listeCompetence->execute();
+  $listeCompetence = $listeCompetence->fetchAll(PDO::FETCH_ASSOC);
 
-    $requeteInfoAdmin = $bdd->prepare("SELECT * FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteInfoAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-    $requeteInfoAdmin->execute();
+  $listeTransverses = $bdd->prepare('SELECT idCompetenceTransverse, nom, description FROM CompetenceTransverse');
+  $listeTransverses->execute();
+  $listeTransverse = $listeTransverses->fetchAll(PDO::FETCH_ASSOC);
 
-    $infoAdmin = $requeteInfoAdmin->fetch(PDO::FETCH_ASSOC);
+  
 
-
-    $requeteIdAdmin = $bdd->prepare("SELECT idAdmin FROM Admin WHERE idUtilisateur = :idUtilisateur");
-    $requeteIdAdmin->bindParam(':idUtilisateur', $idUtilisateur);
-
-    $idAdmin = $requeteIdAdmin->fetch(PDO::FETCH_ASSOC);
-
-
-    $_SESSION['nom'] = $infoAdmin['nomAdmin'];
-    $_SESSION['prenom'] = $infoAdmin['prenomAdmin'];
-    $_SESSION['mail'] = $infoAdmin['mail'];
 
 ?>
 
@@ -46,21 +37,55 @@
 <body>
 
 <div class="container">
+
   <div class="col">
     <h3 class="title">Liste des competences "classiques"</h3>
-    <h1 class="username">    
-        <?php
-        ?>
-</h1>
+    <?php
+    foreach($listeCompetence as $competence)
+    {
+      echo '<div class="competence-item">';
+      echo '<p class="competence">'.$competence['nomCompetence'].'</p>';
+      echo '<p class="description">'.$competence['description'].'</p>';
+      echo '<p class="matiere">'.$competence['nomMatiere'].'</p>';
+      echo '<p class="ecole">'.$competence['ecole'].'</p>';
+      echo '<p class="promo">'.$competence['promo'].'</p>';
+      echo '</div>';
+    }
 
+    ?>
   </div>
+
   <div class="col">
     <h3 class="title">Liste des compétences transverses</h3>
+    <?php
+      foreach($listeTransverse as $transverse ){
+        echo '<div class="competence-item">';
+        echo '<p class="competence">'.$transverse['nom'].'</p>';
+        echo '<p class="description">'.$transverse['description'].'</p>';
+
+        $listeEcole = $bdd->prepare('SELECT Ecole.ecole FROM Ecole INNER JOIN TransverseEcole ON TransverseEcole.idEcole = Ecole.idEcole INNER JOIN CompetenceTransverse ON TransverseEcole.idCompetenceTransverse = CompetenceTransverse.idCompetenceTransverse WHERE CompetenceTransverse.idCompetenceTransverse = :idCompetenceTransverse');
+        $listeEcole->bindParam(':idCompetenceTransverse', $transverse['idCompetenceTransverse']);
+        $listeEcole->execute();
+        $listeEcole = $listeEcole->fetchAll(PDO::FETCH_ASSOC);
+
+        echo '<p class="ecole">';
+        foreach($listeEcole as $ecole){
+          echo $ecole['ecole'].' ';
+          echo "  |  ";
+        }
+        echo '</p>';
+
+
+
+
+
+
+        echo '</div>';
+
+      }
+    ?>
   </div>
 
-  <div class="col">
-    <h3 class="title">Liste de toutes les compétences</h3>
-  </div>
 </div>
 
 </body>

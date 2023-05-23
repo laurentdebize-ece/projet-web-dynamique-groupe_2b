@@ -242,6 +242,8 @@ grid-template-columns: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     height: 700px;
     padding-top: 90px;
+    margin-left: 150px;
+    margin-top: 50px;
 
   }
 
@@ -249,8 +251,24 @@ grid-template-columns: repeat(5, 1fr);
     border: 1px solid black;
     padding: 20px;
     text-align: center;
+    border-radius: 10px;
+    margin-right: 50px;
+    width: 500px;
   }
 
   .title {
     text-align: center;
+  }
+
+  .matiere-item{
+    text-align: left;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #C7DDEA;
+  }
+
+  .matiere{
+    font-weight: 800;
+    margin-bottom: 10px;
   }

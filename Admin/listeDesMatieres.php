@@ -2,7 +2,19 @@
     session_start();
     require_once '../bdd.php';
 
+    $requeteMatiereECE = $bdd->prepare('SELECT * FROM Matiere INNER JOIN PromoMatiere ON PromoMatiere.idMatiere = Matiere.idMatiere INNER JOIN Promo ON Promo.idPromo = PromoMatiere.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole WHERE Ecole.idEcole = 1');
+    $requeteMatiereECE->execute();
+    $listeMatiereECE = $requeteMatiereECE->fetchAll(PDO::FETCH_ASSOC);
 
+    $requeteMatiereHEIP = $bdd->prepare('SELECT * FROM Matiere INNER JOIN PromoMatiere ON PromoMatiere.idMatiere = Matiere.idMatiere INNER JOIN Promo ON Promo.idPromo = PromoMatiere.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole WHERE Ecole.idEcole = 2');
+    $requeteMatiereHEIP->execute();
+    $listeMatiereHEIP = $requeteMatiereHEIP->fetchAll(PDO::FETCH_ASSOC);
+
+    $requeteMatiereINSEEC = $bdd->prepare('SELECT * FROM Matiere INNER JOIN PromoMatiere ON PromoMatiere.idMatiere = Matiere.idMatiere INNER JOIN Promo ON Promo.idPromo = PromoMatiere.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole WHERE Ecole.idEcole = 3');
+    $requeteMatiereINSEEC->execute();
+    $listeMatiereINSEEC = $requeteMatiereINSEEC->fetchAll(PDO::FETCH_ASSOC);
+
+    
 
 ?>
 
@@ -30,20 +42,50 @@
 <div class="container">
   <div class="col">
     <h3 class="title">Liste des matières de l'ECE</h3>
-    <h1 class="username">    
-        <?php
-        ?>
-</h1>
-
+    <div class="liste-matiere">
+      <?php
+        foreach($listeMatiereECE as $matiereECE){
+          echo '<div class="matiere-item">';
+          echo '<p class="matiere">'.$matiereECE['nomMatiere'].'</p>';
+          echo '<p class="ecole"> Ecole : '.$matiereECE['ecole'].'</p>';
+          echo '<p class="promo"> Promo : '.$matiereECE['promo'].'</p>';
+          echo '<p class="prof"> Professeur : '.$matiereECE['nomProf'].'</p>';
+          echo '<p class="nbHeure">Nombre d"heure : '.$matiereECE['nbHeures'].' </p>';
+          echo '</div>';
+        }
+      ?>
+    </div>
   </div>
   <div class="col">
     <h3 class="title">Liste des matières de HEIP</h3>
+    <div class="liste-matiere">
+      <?php
+        foreach($listeMatiereHEIP as $matiereHEIP){
+          echo '<div class="matiere-item">';
+          echo '<p class="matiere">'.$matiereHEIP['nomMatiere'].'</p>';
+          echo '<p class="ecole"> Ecole : '.$matiereHEIP['ecole'].'</p>';
+          echo '<p class="promo"> Promo : '.$matiereHEIP['promo'].'</p>';
+          echo '<p class="prof"> Professeur : '.$matiereHEIP['nomProf'].'</p>';
+          echo '<p class="nbHeure">Nombre d"heure : '.$matiereHEIP['nbHeures'].' </p>';
+          echo '</div>';
+        }
+      ?>
+      </div>
   </div>
   <div class="col">
     <h3 class="title">Liste des matières de l'INSEEC</h3>
-  </div>
-  <div class="col">
-    <h3 class="title">Liste complète</h3>
+    <div class="liste-matiere">
+      <?php
+        foreach($listeMatiereINSEEC as $matiereINSEEC){
+          echo '<div class="matiere-item">';
+          echo '<p class="matiere">'.$matiereINSEEC['nomMatiere'].'</p>';
+          echo '<p class="ecole"> Ecole : '.$matiereINSEEC['ecole'].'</p>';
+          echo '<p class="promo"> Promo : '.$matiereINSEEC['promo'].'</p>';
+          echo '<p class="prof"> Professeur : '.$matiereINSEEC['nomProf'].'</p>';
+          echo '<p class="nbHeure">Nombre d"heure : '.$matiereINSEEC['nbHeures'].' </p>';
+          echo '</div>';
+        }
+      ?>
   </div>
 </div>
 
