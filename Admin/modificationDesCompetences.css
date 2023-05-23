@@ -221,3 +221,8 @@ grid-template-columns: repeat(5, 1fr);
     display: none;
     margin-top: 20px;
   }
+
+  .suppr-competence{
+    display: none;
+    margin-top: 20px;
+  }

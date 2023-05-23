@@ -7,6 +7,10 @@
     $listeMatiere = $reqListeMatiere->fetchAll(PDO::FETCH_ASSOC);
 
 
+    $reqlListeCompetence = $bdd->prepare("SELECT idCompetence, nomCompetence, description, nomMatiere, ecole, promo FROM Competence");
+    $reqlListeCompetence->execute();
+    $listeCompetence = $reqlListeCompetence->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +78,7 @@
 
   let formulaireVisible = false;
 
-  bouton.addEventListener('click', function() {
+   bouton.addEventListener('click', function() {
     formulaireVisible = !formulaireVisible;
 
     if (formulaireVisible) {
@@ -96,9 +100,26 @@
                 <div class="utilisateur">
 
                     <div><a class="btn-ecole-link" href="./gestionDesCompetences.php"></a><button class="ecole-btn" id="afficher-liste">Supprimer une compétence</button></a> </div>
+                    <div class="suppr-competence" id="suppr-competence">
+                          <h2>Choisir la competence à supprimer :</h2>
+                          <div class="form-suppr">
+                                      <form action="./traitementSuppressionCompetence.php" method="post">
+                            
+                                        <label for="competence">Competence:</label>
+                                        <select name="competence" id="competence" required>
+                                            <option value="">--Choisir une competence--</option>
+                                            <?php foreach ($listeCompetence as $competence) { ?>
+                                                <option value="<?php echo $competence['idCompetence']; ?>"><?php echo $competence['nomCompetence'] . "  " . $competence['nomMatiere'] . "  " . $competence['ecole'] . "  " . $competence['promo']; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <button type="submit">Supprimer</button>
+                                        
+                                      </form>
+                                 </div>
+                    </div>
             
-                    <div class="liste-competences" id="liste-competences">
-  </select>
+                   
+ 
 </div>
 </div>
 </div>
@@ -107,10 +128,10 @@
 </div>
 
 <script>
-  const bouton = document.getElementById('afficher-liste');
-  const listeCompetences = document.getElementById('liste-competences');
+  const bouton2 = document.getElementById('afficher-liste');
+  const listeCompetences = document.getElementById('suppr-competence');
 
-  bouton.addEventListener('click', function() {
+  bouton2.addEventListener('click', function() {
     if (listeCompetences.style.display === 'none') {
       listeCompetences.style.display = 'block';
     } else {

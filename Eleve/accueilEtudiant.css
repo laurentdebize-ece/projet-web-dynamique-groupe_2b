@@ -395,29 +395,24 @@ i{
 
 .ecole-btn{
     height: 50px;
-<<<<<<<< HEAD:Eleve/accueilEtudiant.css
     width: 100%;
-========
->>>>>>>> main:Admin/accueilAdmin.css
     font-size: 1.3rem;
     cursor: pointer;
     border: solid 1px rgb(187, 187, 187);
     background-color: #C6DEC6;
     box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-<<<<<<<< HEAD:Eleve/accueilEtudiant.css
     transition: all 0.3s ease-in-out;
 }
 
 
-========
-}
+
 
 .btn-ecole-link{
     margin: 0;
     padding: 0;
 }
->>>>>>>> main:Admin/accueilAdmin.css
+
 
 .red{
     background-color: rgb(219, 89, 89);
@@ -428,7 +423,7 @@ i{
 .orange{
     background-color: rgb(255, 191, 123);
 }
-<<<<<<<< HEAD:Eleve/accueilEtudiant.css
+
 
 .ecole-btn:hover{
     box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.3);
@@ -449,5 +444,3 @@ i{
     font-size: 1.2rem;
     font-weight: 200;
 }
-========
->>>>>>>> main:Admin/accueilAdmin.css
