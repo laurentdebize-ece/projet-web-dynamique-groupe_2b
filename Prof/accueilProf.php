@@ -66,7 +66,7 @@
                     <a href="./gestionDesCompetences.php" class="menu-link">Gérer les compétences</a>
                 </li>
                 <li class="menu-item">
-                    <a href="./listeDesClasses.php" class="menu-link">Mes classes</a>
+                    <a href="./listeDesClasses.php" class="menu-link">Mes matières</a>
                 </li>
                 <li class="menu-item">
                     <a href="validationProf.php" class="menu-link">Evaluer mes élèves</a>
@@ -81,7 +81,7 @@
                 <a href="" class="icon-link"><i class="fa-solid fa-gear"></i>    </a>
                 <br>
                 <br>
-                <a href="../Login.php" class="icon-link"><i class="fa-solid fa-power-off"></i><a href="" class="logout-link"></a></a>         
+                <a href="../traitementLogout.php" class="icon-link"><i class="fa-solid fa-power-off"></i><a href="" class="logout-link"></a></a>         
             </div>
         </section>
             
@@ -184,9 +184,9 @@ sendButton.addEventListener('click', function(event) {
 </script>
                 
                 <div class="mes-matieres">
-                    <h2 class="card-title"><a class="gen-card-link" href="./gestionDesMatieres.php"> Mes Classes</a></h2>
+                    <h2 class="card-title"><a class="gen-card-link" href="./gestionDesMatieres.php"> Mes matières</a></h2>
                     <br>
-                    <h2><a href="./listeDesClasses.php" class="matiere-link">Voir toutes mes classes</a><h2>
+                    <h2><a href="./listeDesClasses.php" class="matiere-link">Voir toutes mes matières</a><h2>
             
                 </div>
 

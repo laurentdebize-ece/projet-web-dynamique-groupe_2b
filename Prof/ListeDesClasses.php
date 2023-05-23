@@ -2,20 +2,25 @@
     session_start();
     require_once '../bdd.php';
 
-    $requeteClassesECE = $bdd->prepare('SELECT * FROM classe INNER JOIN matiereClasse ON classe.idClasse = matiereClasse.idClasse INNER JOIN matiere ON matiere.idMatiere = matiereClasse.idMatiere INNER JOIN prof ON prof.idProf = matiere.idProf INNER JOIN promo ON promo.idPromo = classe.idPromo INNER JOIN ecole ON ecole.idEcole = ecole.idEcole WHERE Ecole.idEcole = 1 AND matiere.idProf = :idProf');
-    $requeteClassesECE->bindParam(':idProf', $_SESSION['idProfesseur']);
-    $requeteClassesECE->execute();
-    $listeClassesECE = $requeteClassesECE->fetchAll(PDO::FETCH_ASSOC);
+    $idProf = $_SESSION['idProfesseur'];
 
-    $requeteClassesHEIP = $bdd->prepare('SELECT * FROM classe INNER JOIN matiereClasse ON classe.idClasse = matiereClasse.idClasse INNER JOIN matiere ON matiere.idMatiere = matiereClasse.idMatiere INNER JOIN prof ON prof.idProf = matiere.idProf INNER JOIN promo ON promo.idPromo = classe.idPromo INNER JOIN ecole ON ecole.idEcole = ecole.idEcole WHERE Ecole.idEcole = 2 AND prof.idProf = :idProf');
-    $requeteClassesHEIP->bindParam(':idProf', $_SESSION['idProfesseur']);    
-    $requeteClassesHEIP->execute();
-    $listeClassesHEIP = $requeteClassesHEIP->fetchAll(PDO::FETCH_ASSOC);
+    $reqClasseEce = $bdd->prepare('SELECT Classe.idClasse, Classe.nomClasse, Ecole.ecole, Promo.promo, Matiere.nbHeures, Matiere.nomMatiere FROM Classe INNER JOIN Promo ON Promo.idPromo = Classe.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole INNER JOIN MatiereClasse ON MatiereClasse.idClasse = Classe.idClasse INNER JOIN Matiere ON Matiere.idMatiere = MatiereClasse.idMatiere WHERE Matiere.idProf = :idProf AND Ecole.idEcole = 1');
+    $reqClasseEce->bindParam(':idProf', $idProf);
+    $reqClasseEce->execute();
+    $listeClasseEce = $reqClasseEce->fetchAll(PDO::FETCH_ASSOC);
 
-    $requeteClassesINSEEC = $bdd->prepare('SELECT * FROM classe INNER JOIN matiereClasse ON classe.idClasse = matiereClasse.idClasse INNER JOIN matiere ON matiere.idMatiere = matiereClasse.idMatiere INNER JOIN prof ON prof.idProf = matiere.idProf INNER JOIN promo ON promo.idPromo = classe.idPromo INNER JOIN ecole ON ecole.idEcole = ecole.idEcole WHERE Ecole.idEcole = 3 AND prof.idProf = :idProf');
-    $requeteClassesINSEEC->bindParam(':idProf', $_SESSION['idProfesseur']);    
-    $requeteClassesINSEEC->execute();
-    $listeClassesINSEEC = $requeteClassesINSEEC->fetchAll(PDO::FETCH_ASSOC);
+    $reqClasseHEIP = $bdd->prepare('SELECT Classe.idClasse, Classe.nomClasse, Ecole.ecole, Promo.promo, Matiere.nbHeures, Matiere.nomMatiere FROM Classe INNER JOIN Promo ON Promo.idPromo = Classe.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole INNER JOIN MatiereClasse ON MatiereClasse.idClasse = Classe.idClasse INNER JOIN Matiere ON Matiere.idMatiere = MatiereClasse.idMatiere WHERE Matiere.idProf = :idProf AND Ecole.idEcole = 2');
+    $reqClasseHEIP->bindParam(':idProf', $idProf);
+    $reqClasseHEIP->execute();
+    $listeClasseHEIP = $reqClasseHEIP->fetchAll(PDO::FETCH_ASSOC);
+
+    $reqClasseINSEEC = $bdd->prepare('SELECT Classe.idClasse, Classe.nomClasse, Ecole.ecole, Promo.promo, Matiere.nbHeures, Matiere.nomMatiere FROM Classe INNER JOIN Promo ON Promo.idPromo = Classe.idPromo INNER JOIN Ecole ON Ecole.idEcole = Promo.idEcole INNER JOIN MatiereClasse ON MatiereClasse.idClasse = Classe.idClasse INNER JOIN Matiere ON Matiere.idMatiere = MatiereClasse.idMatiere WHERE Matiere.idProf = :idProf AND Ecole.idEcole = 3');
+    $reqClasseINSEEC->bindParam(':idProf', $idProf);
+    $reqClasseINSEEC->execute();
+    $listeClasseINSEEC = $reqClasseINSEEC->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
     
 
@@ -37,18 +42,19 @@
     <title>Gestion des utilisateurs</title>
     <a class="home-link" href="accueilProf.php">    <i class="fa-solid fa-house"></i></a>
     <div class= account-info>
-    <h1 class="page-title">Liste des Matieres</h1>
+    <h1 class="page-title">Liste des Matières</h1>
 </div>
 </head>
 <body>
 
 <div class="container">
   <div class="col">
-    <h3 class="title">Vos classes à l'ECE</h3>
+    <h3 class="title">Vos matieres à l'ECE</h3>
     <div class="liste-matiere">
       <?php
-        foreach($listeClassesECE as $ClassesECE){
+        foreach($listeClasseEce as $ClassesECE){
           echo '<div class="matiere-item">';
+          echo '<p class="ecole"> Nom de la matiere : '.$ClassesECE['nomMatiere'].'</p>';
           echo '<p class="matiere">'.$ClassesECE['nomClasse'].'</p>';
           echo '<p class="ecole"> Ecole : '.$ClassesECE['ecole'].'</p>';
           echo '<p class="promo"> Promo : '.$ClassesECE['promo'].'</p>';
@@ -59,11 +65,12 @@
     </div>
   </div>
   <div class="col">
-    <h3 class="title">Vos classes à HEIP</h3>
+    <h3 class="title">Vos matières à HEIP</h3>
     <div class="liste-matiere">
       <?php
-        foreach($listeClassesHEIP as $ClassesHEIP){
+        foreach($listeClasseHEIP as $ClassesHEIP){
             echo '<div class="matiere-item">';
+            echo '<p class="ecole"> Nom de la matiere : '.$ClassesHEIP['nomMatiere'].'</p>';
             echo '<p class="matiere">'.$ClassesHEIP['nomClasse'].'</p>';
             echo '<p class="ecole"> Ecole : '.$ClassesHEIP['ecole'].'</p>';
             echo '<p class="promo"> Promo : '.$ClassesHEIP['promo'].'</p>';
@@ -74,11 +81,12 @@
       </div>
   </div>
   <div class="col">
-    <h3 class="title">Vos classes à l'INSEEC</h3>
+    <h3 class="title">Vos matières à l'INSEEC</h3>
     <div class="liste-matiere">
       <?php
-        foreach($listeClassesINSEEC as $ClassesINSEEC){
+        foreach($listeClasseINSEEC as $ClassesINSEEC){
             echo '<div class="matiere-item">';
+            echo '<p class="ecole"> Nom de la matiere : '.$ClassesINSEEC['nomMatiere'].'</p>';
             echo '<p class="matiere">'.$ClassesINSEEC['nomClasse'].'</p>';
             echo '<p class="ecole"> Ecole : '.$ClassesINSEEC['ecole'].'</p>';
             echo '<p class="promo"> Promo : '.$ClassesINSEEC['promo'].'</p>';

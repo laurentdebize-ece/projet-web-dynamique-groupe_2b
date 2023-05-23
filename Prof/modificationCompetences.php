@@ -2,7 +2,11 @@
     session_start();
     require_once"../bdd.php";
 
-    $reqListeMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere, nomProf, ecole, promo FROM Matiere");
+    $idProf = $_SESSION['idProfesseur'];
+
+
+    $reqListeMatiere = $bdd->prepare("SELECT idMatiere, nomMatiere, nomProf, ecole, promo FROM Matiere WHERE idProf = :idProf");
+    $reqListeMatiere->bindValue(':idProf', $idProf);
     $reqListeMatiere->execute();
     $listeMatiere = $reqListeMatiere->fetchAll(PDO::FETCH_ASSOC);
 
