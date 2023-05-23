@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia sans' ;
+}
+
+.home-link{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.fa-house{
+    font-size: 2rem;
+    margin: 20px;
+    transition: .3s ease-in-out;
+}
+
+.fa-house:hover{
+    transform: scale(1.2);
+}
+
+
+
+.account-info{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #D6D6D6 ;
+    margin-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.username{
+    font-size: 3rem;
+    margin-bottom: 20px;
+    
+}
+
+.username::after{
+    content: '';
+    width: 200px;
+    height: 2px;
+    background-color: #000000 ;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    animation: underlineAnimation 2s infinite;
+}
+
+@keyframes underlineAnimation{
+    0%{
+        width: 1px;
+    }
+    50%{
+        width: 200px;
+    }
+    100%{
+        width: 1px;
+    }
+}
+
+.userstatut{
+    background-color: #C6DEC6;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.userecole{
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+.usermail{
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+
+
+.bottomright-circle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background-color: #C6DEC6;
+    border-radius: 0 0 0 100% ;
+    z-index: -1;
+}
