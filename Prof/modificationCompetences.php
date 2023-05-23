@@ -54,8 +54,13 @@
     <label for="matiere">Matiere:</label>
     <select name="matiere" id="matiere" required>
         <option value="">--Choisir une matiere--</option>
-        <?php foreach ($listeMatiere as $matiere) { ?>
-            <option value="<?php echo $matiere['idMatiere']; ?>"><?php echo $matiere['nomMatiere'] . "  " . $matiere['ecole'] . "  " . $matiere['promo']; ?></option>
+        <?php foreach ($listeMatiere as $matiere) {
+          $matiereBloquee = $bdd->prepare('SELECT * FROM matiere WHERE matiere.idProf = :idProf');
+          $_SESSION['idProf'] = $idProf['idProf'];
+          ?>
+            <option value="<?php echo $matiere['idMatiere']; ?>" <?php if($matiereBloquee) echo 'indisponible'; ?>>
+            <?php echo $matiere['nomMatiere'] . "  " . $matiere['ecole'] . "  " . $matiere['promo']; ?>
+          </option>
         <?php } ?>
     </select>
 

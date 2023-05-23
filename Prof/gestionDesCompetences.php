@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@200;300;400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Gestion des utilisateurs</title>
-    <a class="home-link" href="accueilAdmin.php"><i class="fa-solid fa-house"></i></a>
+    <a class="home-link" href="accueilProf.php"><i class="fa-solid fa-house"></i></a>
     <div class= account-info>
     <h1 class="page-title">GESTION DES Competences</h1>
 </div>

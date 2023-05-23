@@ -63,10 +63,10 @@
             </div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="./listeDesUtilisateurs.php" class="menu-link">Liste des utilisateurs</a>
+                    <a href="./gestionDesCompetences.php" class="menu-link">Gérer les compétences</a>
                 </li>
                 <li class="menu-item">
-                    <a href="./listeDesMatieres.php" class="menu-link">Liste des matières</a>
+                    <a href="./listeDesClasses.php" class="menu-link">Mes classes</a>
                 </li>
                 <li class="menu-item">
                     <a href="validationProf.php" class="menu-link">Evaluer mes élèves</a>
@@ -145,21 +145,17 @@ sendButton.addEventListener('click', function(event) {
             <div class="menu-part">
 
                 <div class="mes-competences">
-                    <h2 class='card-title'> <a class="gen-card-link" href="./gestionDesUtilisateurs.php">Gerer les utilisateurs</a> </h2>
+                    <h2 class='card-title'> <a class="gen-card-link" href="./gestionDesCompetences.php">Gérer les compétences</a> </h2>
                         <div class="competence-card">
                 <div class="utilisateur">
                     <div class="utilisateur-box-prof" onclick="redirigerVersAutrePage1()">
                         <a href="accountProf.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-book"></i></div>
                     </div>
-                    <h6 class="user-texte-prof">Professeurs</h6>
+                    <h6 class="user-texte-prof">Gestion</h6>
                 </div>
             
                 <script>
-  function redirigerVersAutrePage1() {
-    var urlDestination = './gestionDesProfs.php';
-    window.location.href = urlDestination;
-  }
 
 </script>
 
@@ -168,14 +164,22 @@ sendButton.addEventListener('click', function(event) {
                     <a href="accountProf.php" class="user-link"> </a>
                         <div><i class="fa-solid fa-address-card"></i></div>
                     </div>
-                    
-                    <h6 class="user-texte-eleve">Elèves</h6>
+                    <h6 class="user-texte-eleve">Toutes les compétences</h6>
+
 
                 </div>
                 </div>
                 </div>
 
                 <script>
+    function redirigerVersAutrePage1() {
+    var urlDestination = './gestionDesCompetences.php';
+    window.location.href = urlDestination;
+  }
+  function redirigerVersAutrePage2() {
+    var urlDestination = './ListeDesCompetences.php';
+    window.location.href = urlDestination;
+  }
 
 </script>
                 
@@ -199,7 +203,6 @@ sendButton.addEventListener('click', function(event) {
 
         </section>
 </div>
->>>>>>> PaulB
 
 </body>
 </html>
